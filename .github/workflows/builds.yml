@@ -3,15 +3,15 @@ name: Builds
 on: [push, pull_request]
 
 env:
-  LIBNAME: summator
+  LIBNAME: aiblue
 
-concurrency: 
+concurrency:
   group: ci-${{github.actor}}-${{github.head_ref || github.run_number}}-${{github.ref}}-macos
   cancel-in-progress: true
 
 jobs:
   build:
-    runs-on:  ${{matrix.os}}
+    runs-on: ${{matrix.os}}
     name: ${{matrix.name}}
     strategy:
       fail-fast: false
@@ -57,7 +57,6 @@ jobs:
             arch: x86_64
 
     steps:
-
       - name: Checkout project
         uses: actions/checkout@v3
         with:
@@ -66,7 +65,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.x'
+          python-version: "3.x"
 
       - name: Set up SCons
         shell: bash
@@ -107,15 +106,15 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: ${{ github.event.repository.name }}
-          path: 'game/bin/'
+          path: "game/bin/"
 
       - name: Archive Release
         if: success() && github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
         uses: thedoctor0/zip-release@0.7.1
         with:
-          type: 'zip'
-          filename: '${{ env.LIBNAME }}.${{ matrix.platform }}.${{ matrix.target }}.${{ matrix.arch }}.zip'
-          path: 'game/bin/'
+          type: "zip"
+          filename: "${{ env.LIBNAME }}.${{ matrix.platform }}.${{ matrix.target }}.${{ matrix.arch }}.zip"
+          path: "game/bin/"
 
       - name: Create and upload asset
         uses: ncipollo/release-action@v1

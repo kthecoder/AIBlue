@@ -1,6 +1,6 @@
-//© Copyright 2014-2022, Juan Linietsky, Ariel Manzur and the Godot community (CC-BY 3.0)
-#ifndef SUMMATOR_CLASS_H
-#define SUMMATOR_CLASS_H
+// © Copyright 2014-2022, Juan Linietsky, Ariel Manzur and the Godot community (CC-BY 3.0)
+#ifndef AI_BLUE_CLASS_H
+#define AI_BLUE_CLASS_H
 
 // We don't need windows.h in this plugin but many others do and it throws up on itself all the time
 // So best to include it and make sure CI warns us when we use something Microsoft took for their own goals....
@@ -12,9 +12,9 @@
 
 using namespace godot;
 
-class Summator : public RefCounted
+class AIBlue : public RefCounted
 {
-    GDCLASS(Summator, RefCounted);
+    GDCLASS(AIBlue, RefCounted);
 
     int count;
 
@@ -22,12 +22,12 @@ protected:
     static void _bind_methods();
 
 public:
-    Summator();
-    ~Summator();
+    AIBlue();
+    ~AIBlue();
 
     void add(int p_value);
     void reset();
     int get_total() const;
 };
 
-#endif // SUMMATOR_CLASS_H
+#endif // AIBlue_CLASS_H
