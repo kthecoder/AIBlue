@@ -2,10 +2,10 @@
 namespace FluidHTN
 {
 
-enum class EffectType
-{
-    PlanAndExecute,
-    PlanOnly,
-    Permanent
-};
+    enum class FluidEffectType
+    {
+        PlanAndExecute,
+        PlanOnly,
+        Permanent
+    };
 } // namespace FluidHTN

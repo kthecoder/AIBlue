@@ -18,3 +18,7 @@
 1. Run the `build-extension [dev build]` command.
    1. To use this command you need to also modify your specific Godot paths inside the `.vscode/tasks.json` file.
    1. For further information see [here](https://github.com/paddy-exe/GDExtensionSummator/issues/50).
+
+# Godot Specifics
+
+1. Some classes are renamed from the original CPP version due to the fact that Godot uses those names for some features like ActionType.

@@ -1,4 +1,5 @@
 #include "AgentDomainBuilder.h"
+#include "Domain.h"
 
 using namespace FluidHTN;
 
@@ -14,16 +15,18 @@ using namespace FluidHTN;
 
 class AgentXDomainDefinition
 {
+
     // TODO Implement Domain Definition
     // Returns a Domain with Tasks, Conditions, Effects
-    AgentDomainBuilder Create()
+public:
+    AgentDomainBuilder CreateAgentDomainBuilder()
     {
         AgentDomainBuilder builder("AgentX");
 
         /*
             Tasks are encapsulated and defined in AgentDomainBuilder.h
         */
-        // TODO Execute AgentDomainBuilder functions
+        builder.MoveTo();
 
         return builder;
     }

@@ -24,7 +24,7 @@ public:
     {
         _WorldState->SetState(static_cast<WsAgent>(state), static_cast<uint8_t>(value));
     }
-    void SetStateDTS(WsAgent state, int value, bool dirty, EffectType eff)
+    void SetStateDTS(WsAgent state, int value, bool dirty, FluidEffectType eff)
     {
         BaseContext::SetState(static_cast<WsAgent>(state), static_cast<uint8_t>(value), dirty, eff);
     }

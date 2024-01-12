@@ -183,6 +183,10 @@ Primitive(NavigationIdle)
 
 Now that you have taken the time to really think out what you want your Agent(s) to do, it should be trivial how to convert it to code. Take your HTN Notation (which is a written version of the Fluid HTN Domain) & implement everything you need for the Agent to plan, come alive.
 
+The following attempts to illustrate the architecture of the CPP version of Fluid HTN:
+
+![Fluid HTN CPP Version Architecture Diagram](https://github.com/kthecoder/AIBlue/blob/main/Assets/architecture.png)
+
 Based on your Agent Notation:
 
 1. Implement : Sensors
@@ -208,48 +212,7 @@ Based on your Agent Notation:
 1. Implement : Domain
    1. The Domain definition : term to describe the entire task hierarchy
 
-Example pulled from : [Fluid HTN Read Me](https://github.com/ptrefall/fluid-hierarchical-task-network)
-
-```
-var domain = new DomainBuilder<MyContext>("MyDomain")
-    .Select("C")
-        .Condition("Has A and B", (ctx) => ctx.HasState(MyWorldState.HasA) && ctx.HasState(MyWorldState.HasB))
-        .Condition("Has NOT C", (ctx) => !ctx.HasState(MyWorldState.HasC))
-        .Action("Get C")
-            .Do((ctx) => { Console.WriteLine("Get C"); return TaskStatus.Success; })
-            .Effect("Has C", EffectType.PlanAndExecute, (ctx, type) => ctx.SetState(MyWorldState.HasC, true, type))
-        .End()
-    .End()
-    .Sequence("A and B")
-        .Condition("Has NOT A nor B", (ctx) => !(ctx.HasState(MyWorldState.HasA) && ctx.HasState(MyWorldState.HasB)))
-        .Action("Get A")
-            .Do((ctx) => { Console.WriteLine("Get A"); return TaskStatus.Success; })
-            .Effect("Has A", EffectType.PlanAndExecute, (ctx, type) => ctx.SetState(MyWorldState.HasA, true, type))
-        .End()
-        .Action("Get B")
-            .Condition("Has A", (ctx) => ctx.HasState(MyWorldState.HasA))
-            .Do((ctx) => { Console.WriteLine("Get B"); return TaskStatus.Success; })
-            .Effect("Has B", EffectType.PlanAndExecute, (ctx, type) => ctx.SetState(MyWorldState.HasB, true, type))
-        .End()
-    .End()
-    .Select("Done")
-        .Action("Done")
-            .Do((ctx) =>
-            {
-                Console.WriteLine("Done");
-                ctx.Done = true;
-                return TaskStatus.Continue;
-            })
-        .End()
-    .End()
-    .Build();
-```
-
-## 3a A Second Approach
-
-You may choose to follow the example [Fluid HTN Troll Bridge Example](https://github.com/ptrefall/fluid-troll-bridge).
-
-In this example, the pre-conditions, effects, actions, & end(); are all consumed into the AIBuilder.
+Using the example from [Fluid HTN Troll Bridge Example](https://github.com/ptrefall/fluid-troll-bridge) the pre-conditions, effects, actions, & end(); are all consumed into the AIBuilder.
 
 This simplifies the Domain to look like in the example:
 

@@ -25,6 +25,11 @@ namespace FluidHTN
         Map<int, SharedPtr<Slot>> _slots;
 
     public:
+        Domain()
+        {
+            _Root = MakeSharedPtr<TaskRoot>();
+            _Root->Name() = "DefaultDomainName";
+        };
         Domain(const StringType &name)
         {
             _Root = MakeSharedPtr<TaskRoot>();

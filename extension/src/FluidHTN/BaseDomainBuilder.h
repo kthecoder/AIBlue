@@ -147,7 +147,7 @@ namespace FluidHTN
             auto task = StaticCastPtr<PrimitiveTask>(Pointer());
             return task->SetOperator(base);
         }
-        bool AddEffect(const StringType &name, EffectType effectType, ActionType action)
+        bool AddEffect(const StringType &name, FluidEffectType effectType, FluidActionType action)
         {
             FHTN_FATAL_EXCEPTION(Pointer()->IsTypeOf(ITaskDerivedClassName::PrimitiveTask),
                                  "Tried to add an Effect, but the Pointer is not a Primitive Task!");

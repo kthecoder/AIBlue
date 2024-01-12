@@ -33,7 +33,7 @@ namespace FluidHTN
         SharedPtr<IWorldState<WSIDTYPE, WSVALTYPE, WSDERIVEDTYPE>> _WorldState;
 
         // An array of stacks per property of the world state.
-        typedef Stack<Pair<EffectType, WSVALTYPE>> WorldStateStackType;
+        typedef Stack<Pair<FluidEffectType, WSVALTYPE>> WorldStateStackType;
         typedef ArrayType<WorldStateStackType> WorldStateStackArrayType;
 
         WorldStateStackArrayType _WorldStateChangeStackArray;
@@ -93,7 +93,7 @@ namespace FluidHTN
         virtual void SetState(WSIDTYPE state,
                               WSVALTYPE value,
                               bool setAsDirty /* = true */,
-                              EffectType e /* = EffectType::Permanent */)
+                              FluidEffectType e /* = FluidEffectType::Permanent */)
         {
             if (_ContextState == ContextState::Executing)
             {
@@ -133,7 +133,7 @@ namespace FluidHTN
             for (size_t si = 0; si < _WorldStateChangeStackArray.size(); si++)
             {
                 auto &stack = _WorldStateChangeStackArray[si];
-                while (stack.size() != 0 && stack.top().First() != EffectType::Permanent)
+                while (stack.size() != 0 && stack.top().First() != FluidEffectType::Permanent)
                 {
                     stack.pop();
                 }
