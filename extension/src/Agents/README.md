@@ -81,8 +81,14 @@ Now that we have define our Agent Notation we can easily understand how to apply
 ```
 public enum AgentState : byte
 {
-    EnemyInRange,
-    EnemyInSight,
+    wsEnemyRange,
+    wsHealth,
+}
+
+public enum EnemyRange : byte
+{
+    ViewRange,
+    OutOfRange,
 }
 
 AgentDomainBuilder("HordeAgent")

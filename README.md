@@ -101,7 +101,7 @@ Primitive Task 2 [task2()]
         Effects [<effect>] // Optional
 ```
 
-~~HTN Notation Adapted From [Chapter : 12.3](http://www.gameaipro.com/GameAIPro/GameAIPro_Chapter12_Exploring_HTN_Planners_through_Example.pdf)~~
+**HTN Notation Adapted From [Chapter : 12.3](http://www.gameaipro.com/GameAIPro/GameAIPro_Chapter12_Exploring_HTN_Planners_through_Example.pdf)**
 
 The goal is to split up the Agents features into Awareness, Knowledge, Actions, and Tasks. Take everything you decided about your Agent and split it up into the following using HTN Notation:
 
