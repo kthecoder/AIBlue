@@ -1,10 +1,21 @@
-#include <vector>
-
-#include "Knowledge/AgentState.h"
-#include "Contexts/BaseContext.h"
+#include "FluidHTN/Contexts/BaseContext.h"
 
 using namespace FluidHTN;
 using namespace std;
+
+enum class WsAgent
+{
+    wsEnemyRange,
+    wsHealth,
+};
+
+enum class EnemyRange
+{
+    InViewRange,
+    OutOfRange,
+};
+
+typedef uint8_t EnemyRangeTy;
 
 class AgentWorldState : public IWorldState<WsAgent, uint8_t, AgentWorldState>
 {

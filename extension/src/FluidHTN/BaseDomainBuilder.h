@@ -10,7 +10,7 @@
 #include "Operators/Operator.h"
 #include "Effects/Effect.h"
 
-using std::string_literals::operator""s;
+using namespace std::string_literals;
 
 namespace FluidHTN
 {

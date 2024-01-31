@@ -1,48 +1,50 @@
 #pragma once
 #include "./STLTypes.h"
 
+using namespace std::string_literals;
+
 namespace FluidHTN
 {
-enum class ConsoleColor
-{
-    Black,
-    Red,
-    DarkRed,
-    Blue,
-    DarkBlue,
-    Green,
-    DarkGreen,
-    White,
-    Yellow,
-    DarkYellow 
-};
-class Debug
-{
-public:
-    static StringType DepthToString(int depth)
+    enum class ConsoleColor
     {
-        StringType s = ""s;
-        for (auto i = 0; i < depth; i++)
+        Black,
+        Red,
+        DarkRed,
+        Blue,
+        DarkBlue,
+        Green,
+        DarkGreen,
+        White,
+        Yellow,
+        DarkYellow
+    };
+    class Debug
+    {
+    public:
+        static StringType DepthToString(int depth)
         {
-            s += "\t"s;
+            StringType s = ""s;
+            for (auto i = 0; i < depth; i++)
+            {
+                s += "\t"s;
+            }
+
+            s += "- "s;
+            return s;
         }
+    };
+    struct IBaseDecompositionLogEntry
+    {
+        StringType Name;
+        StringType Description;
+        int Depth;
+        ConsoleColor Color;
+    };
 
-        s += "- "s;
-        return s;
-    }
-};
-struct IBaseDecompositionLogEntry
-{
-    StringType  Name;
-    StringType  Description;
-    int          Depth;
-    ConsoleColor Color;
-};
-
-template <typename T>
-struct IDecompositionLogEntry : public IBaseDecompositionLogEntry
-{
-public:
-    SharedPtr<T> _Entry;
-};
+    template <typename T>
+    struct IDecompositionLogEntry : public IBaseDecompositionLogEntry
+    {
+    public:
+        SharedPtr<T> _Entry;
+    };
 } // namespace FluidHTN

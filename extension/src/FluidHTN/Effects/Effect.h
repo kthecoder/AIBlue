@@ -3,7 +3,9 @@
 #include "DebugInterfaces/DecompositionLogEntry.h"
 #include "Contexts/Context.h"
 
-using std::string_literals::operator""s;
+#include <functional>
+
+using namespace std::string_literals;
 
 namespace FluidHTN
 {

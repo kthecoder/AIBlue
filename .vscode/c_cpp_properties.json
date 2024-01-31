@@ -7,7 +7,7 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/godot-cpp/gen/include",
-                "${workspaceFolder}/src"
+                "${workspaceFolder}/extension/src"
             ],
             "defines": [
                 "_DEBUG",
@@ -15,9 +15,8 @@
                 "_UNICODE"
             ],
             "windowsSdkVersion": "10.0.22000.0",
-            // example for windows
-            // "compilerPath": "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.34.31933/bin/Hostx64/x64/cl.exe", 
-            "compilerPath": "pat to the ecompiler",
+            //TODO Must replace this with the location of your Visual Studio C++ Compiler
+            "compilerPath": "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/cl.exe",
             "cStandard": "c17",
             "cppStandard": "c++17"
             // "intelliSenseMode": "windows-msvc-x64"

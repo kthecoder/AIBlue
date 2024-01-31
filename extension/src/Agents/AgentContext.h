@@ -1,7 +1,6 @@
 #pragma once
-#include "Contexts/BaseContext.h"
-#include "Knowledge/AgentState.h"
-#include "Knowledge/AgentWorldState.h"
+#include "FluidHTN/Contexts/BaseContext.h"
+#include "Agents/Knowledge/AgentWorldState.h"
 
 using namespace FluidHTN;
 

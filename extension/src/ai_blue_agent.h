@@ -8,10 +8,11 @@
 #endif
 
 #include <godot_cpp/classes/ref.hpp>
-#include "AgentXDomainDefinition.h"
-#include "Domain.h"
-#include "Planner.h"
-#include "AgentContext.h"
+
+#include "Agents/Domains/AgentXDomainDefinition.h"
+#include "FluidHTN/Domain.h"
+#include "FluidHTN/Planners/Planner.h"
+#include "Agents/AgentContext.h"
 
 using namespace godot;
 
@@ -34,7 +35,7 @@ public:
     AIBlueAgent();
     ~AIBlueAgent();
 
-    void _process(double delta);
+    void planner_tick();
 };
 
 #endif // AIBlueAgent_CLASS_H

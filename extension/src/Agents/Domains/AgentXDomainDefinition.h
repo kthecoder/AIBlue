@@ -1,4 +1,4 @@
-#include "AgentDomainBuilder.h"
+#include "Agents/AgentDomainBuilder.h"
 #include "Domain.h"
 
 using namespace FluidHTN;

@@ -8,6 +8,9 @@
 #include <string>
 #include <ctime>
 #include <memory>
+#include <queue>
+#include <stack>
+#include <unordered_set>
 
 template <typename T>
 using SharedPtr = std::shared_ptr<T>;
@@ -83,6 +86,21 @@ public:
     void clear() { s = std::stack<T>(); }
 };
 
+template <typename T>
+class Set
+{
+private:
+    std::unordered_set<T> myUnorderedSet;
+
+public:
+    template <typename V>
+    auto Insert(V &&x) -> decltype(myUnorderedSet.insert(std::forward<V>(x))) { return myUnorderedSet.insert(std::forward<V>(x)); }
+
+    auto Find(T x) -> decltype(myUnorderedSet.find(std::forward<T>(x))) { return myUnorderedSet.find(std::forward<T>(x)); }
+
+    auto Contains(T x) { return (myUnorderedSet.find(x) != myUnorderedSet.end()); }
+};
+
 template <typename T, typename U>
 class Map
 {
@@ -96,20 +114,6 @@ public:
     auto Find(T x) -> decltype(m.find(std::forward<T>(x))) { return m.find(std::forward<T>(x)); }
 
     auto End() { return m.end(); }
-};
-template <typename T>
-class Set
-{
-private:
-    std::unordered_set<T> s;
-
-public:
-    template <typename V>
-    auto Insert(V &&x) -> decltype(s.insert(std::forward<V>(x))) { return s.insert(std::forward<V>(x)); }
-
-    auto Find(T x) -> decltype(s.find(std::forward<T>(x))) { return s.find(std::forward<T>(x)); }
-
-    auto Contains(T x) { return (s.find(x) != s.end()); }
 };
 
 template <typename T, typename U>

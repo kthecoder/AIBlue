@@ -313,7 +313,7 @@ namespace FluidHTN
                             for (size_t si = 0; si < task->Effects().size(); si++)
                             {
                                 auto effect = task->Effects()[si];
-                                if (effect->Type() == EffectType::PlanAndExecute)
+                                if (effect->Type() == FluidEffectType::PlanAndExecute)
                                 {
                                     if (OnApplyEffect)
                                     {

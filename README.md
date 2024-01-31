@@ -14,7 +14,7 @@ Since GdScript is duck typed and does not have interfaces, porting this to GdScr
 
 # How it Works
 
-Agents are fully designed in the C++ extension, operators and sensors are done in GdScript. Once you have fully designed your Agent(s) you can then compile the plugin and include it in your project where Godot will call the binaries of your built extension.
+Agents are fully designed in the C++ extension, operators and sensors are done in GdScript. Once you have fully designed your Agent(s) knowledge/context, domain and calls in c++ and call your gdscript functions for operators and sensors, you can then compile the plugin and include it in your project where Godot will call the binaries of your built extension.
 
 1. Context
    1. Knowledge system, the brain of the Agent

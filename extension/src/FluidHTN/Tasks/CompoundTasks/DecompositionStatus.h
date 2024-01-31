@@ -1,21 +1,23 @@
 
 #pragma once
 
+using namespace std::string_literals;
+
 namespace FluidHTN
 {
 
-enum class DecompositionStatus
-{
-    Succeeded,
-    Partial,
-    Failed,
-    Rejected
-};
-
-inline StringType DecompositionStatusToString(DecompositionStatus st)
-{
-    switch (st)
+    enum class DecompositionStatus
     {
+        Succeeded,
+        Partial,
+        Failed,
+        Rejected
+    };
+
+    inline StringType DecompositionStatusToString(DecompositionStatus st)
+    {
+        switch (st)
+        {
         case DecompositionStatus::Failed:
             return "DecompositionStatus::Failed"s;
         case DecompositionStatus::Partial:
@@ -26,7 +28,7 @@ inline StringType DecompositionStatusToString(DecompositionStatus st)
             return "DecompositionStatus::Succeded"s;
         default:
             return "ThisSatisifesCompilerUselessWarnings"s;
+        }
     }
-}
 
 } // namespace FluidHTN

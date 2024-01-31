@@ -15,7 +15,7 @@ AIBlueAgent::~AIBlueAgent()
 {
 }
 
-void AIBlueAgent::_process(double delta)
+void AIBlueAgent::planner_tick()
 {
     // Tick the Planner
     _planner.Tick<WsAgent, uint8_t, AgentWorldState>(_domain, _context);
@@ -23,7 +23,7 @@ void AIBlueAgent::_process(double delta)
 
 // TODO You will need to Bind Sensors so that they can be called in Godot
 
-// void AIBlueAgent::_bind_methods()
-// {
-//     ClassDB::bind_method(D_METHOD("add", "value"), &AIBlueAgent::add, DEFVAL(1));
-// }
+void AIBlueAgent::_bind_methods()
+{
+    ClassDB::bind_method(D_METHOD("planner_tick"), &AIBlueAgent::planner_tick);
+}
