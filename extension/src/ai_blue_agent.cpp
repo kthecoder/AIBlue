@@ -2,13 +2,22 @@
 
 #include <godot_cpp/core/class_db.hpp>
 
+#include <godot_cpp/variant/utility_functions.hpp>
+
 using namespace godot;
 
 AIBlueAgent::AIBlueAgent()
 {
+    UtilityFunctions::print("AIBlueAgent | Planner is being setup.");
     _planner = Planner();
+
     _context = AgentContext();
-    _domain = *_agent_domainDefinition.CreateAgentDomainBuilder().Build();
+    // Must Initialize the Agent Context
+    _context.Init();
+    // Build the Domain of the selected Agent
+    _domain = _agentX_domainDefinition.CreateAgentDomainBuilder();
+
+    UtilityFunctions::print("AIBlueAgent | Planner Finished Setup");
 }
 
 AIBlueAgent::~AIBlueAgent()

@@ -23,9 +23,14 @@
 
 ### Debugging via VSCode
 
-1. Run the `build-extension [dev build]` command.
+1. First ensure you have run the `build-extension [dev build]` vs code task command
+   1. Command found in the `CTRL + P` menu, type `task`
    1. To use this command you need to also modify your specific Godot paths inside the `.vscode/tasks.json` file.
-   1. For further information see [here](https://github.com/paddy-exe/GDExtensionSummator/issues/50).
+   1. You need to set the path to your godot project folder
+1. You can then run the debug in VS Code
+   1. Use : `Run Demo [FROM GAME] - [DEBUG MODE]`
+1. When you get errors that are due to FluidHTN
+   1. The errors will show a line in FluidHTN and it will actually be the Fatal Exception in the line of code above that
 
 # Code Changes
 

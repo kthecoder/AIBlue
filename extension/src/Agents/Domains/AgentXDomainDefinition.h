@@ -19,15 +19,19 @@ class AgentXDomainDefinition
     // TODO Implement Domain Definition
     // Returns a Domain with Tasks, Conditions, Effects
 public:
-    AgentDomainBuilder CreateAgentDomainBuilder()
+    Domain CreateAgentDomainBuilder()
     {
         AgentDomainBuilder builder("AgentX");
 
         /*
             Tasks are encapsulated and defined in AgentDomainBuilder.h
         */
-        builder.MoveTo();
 
-        return builder;
+        builder.AddSelector("MoveTo");
+        builder.MoveTo();
+        builder.End(); // End the MoveTO
+        builder.End(); // End the Selector
+
+        return *builder.Build();
     }
 };

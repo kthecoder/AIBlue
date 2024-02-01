@@ -42,7 +42,10 @@ public:
     ArrayType(size_t s) : vec(s) {}
     void Add(const T &x) { vec.push_back(x); }
     size_t size() const { return vec.size(); }
-    void clear() { return vec.clear(); }
+    void clear()
+    {
+        return vec.clear();
+    }
     void PopBack() { vec.pop_back(); }
     void resize(size_t n) { vec.resize(n); }
 

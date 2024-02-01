@@ -19,16 +19,16 @@ public:
         return BaseContext::HasState(state, one);
     }
 
-    void SetStateDTS(WsAgent state, int value)
+    void SetStateAgent(WsAgent state, int value)
     {
         _WorldState->SetState(static_cast<WsAgent>(state), static_cast<uint8_t>(value));
     }
-    void SetStateDTS(WsAgent state, int value, bool dirty, FluidEffectType eff)
+    void SetStateAgent(WsAgent state, int value, bool dirty, FluidEffectType eff)
     {
         BaseContext::SetState(static_cast<WsAgent>(state), static_cast<uint8_t>(value), dirty, eff);
     }
 
-    uint8_t GetStateDTS(WsAgent state) { return BaseContext::GetState(static_cast<WsAgent>(state)); }
+    uint8_t GetStateAgent(WsAgent state) { return BaseContext::GetState(static_cast<WsAgent>(state)); }
 };
 
 typedef BaseContext<WsAgent, uint8_t, AgentWorldState> BaseContextType;

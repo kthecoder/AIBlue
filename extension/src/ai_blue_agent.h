@@ -24,7 +24,7 @@ protected:
     static void _bind_methods();
 
 private:
-    AgentXDomainDefinition _agent_domainDefinition;
+    AgentXDomainDefinition _agentX_domainDefinition;
     Planner _planner;
     Domain _domain;
     AgentContext _context;

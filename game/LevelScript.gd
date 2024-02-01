@@ -47,7 +47,7 @@ func add_player(id: int, spawn_point: Marker3D = null):
 	spawn_node.add_child(player)
 
 
-func _input(event):
+func _input(_event):
 	pass
 	#if event.is_action_pressed("quit"):
 		#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

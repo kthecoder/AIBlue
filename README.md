@@ -1,6 +1,6 @@
 ![AI Blue a Fluid Hierarchical Task Network Port](https://github.com/kthecoder/AIBlue/blob/main/Assets/ai_blue_banner.png)
 
-A simple HTN planner based around the principles of the Builder Pattern, [original](https://github.com/ptrefall/fluid-hierarchical-task-network) ported into [C++ Version](https://github.com/amoldeshpande/fluid-hierarchical-task-network), used to create a Godot template.
+A simple HTN planner based around the principles of the Builder Pattern, [Original](https://github.com/ptrefall/fluid-hierarchical-task-network) ported into [C++ Version](https://github.com/amoldeshpande/fluid-hierarchical-task-network), used to create a Godot template.
 
 This is a work in progress! I have not created an example to test the success of this design yet.
 
