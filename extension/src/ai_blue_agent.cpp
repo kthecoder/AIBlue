@@ -24,19 +24,28 @@ AIBlueAgent::~AIBlueAgent()
 
 bool AIBlueAgent::agent_setup(Variant agentNode)
 {
-    Node3D *node = godot::Object::cast_to<godot::Node3D>(agentNode.operator Object *());
 
-    if (node == nullptr)
+    if (agentNode)
     {
-        return false;
-    }
-    else
-    {
+        NodePath path = agentNode;
+        Node3D *node = Object::cast_to<Node3D>(get_node_or_null(path));
         // Build the Domain of the selected Agent
         _agentX_domainDefinition.init_domain(node);
         _domain = _agentX_domainDefinition.CreateAgentDomainBuilder();
 
         return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+void AIBlueAgent::_process(double _delta)
+{
+    if (_domain.Root()->Name() != "DefaultDomainName")
+    {
+        planner_tick();
     }
 }
 

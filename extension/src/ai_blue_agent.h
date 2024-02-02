@@ -7,7 +7,7 @@
 #include <windows.h>
 #endif
 
-#include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/classes/node3d.hpp>
 
 #include "Agents/Domains/AgentXDomainDefinition.h"
 #include "FluidHTN/Domain.h"
@@ -16,17 +16,17 @@
 
 using namespace godot;
 
-class AIBlueAgent : public RefCounted
+class AIBlueAgent : public Node3D
 {
-    GDCLASS(AIBlueAgent, RefCounted);
+    GDCLASS(AIBlueAgent, Node3D);
 
 protected:
     static void _bind_methods();
 
 private:
     AgentXDomainDefinition _agentX_domainDefinition;
-    Planner _planner;
-    Domain _domain;
+    FluidHTN::Planner _planner;
+    FluidHTN::Domain _domain;
     AgentContext _context;
     // TODO Sensory System
     // StimuliSystem _sensors;
@@ -37,6 +37,8 @@ public:
 
     bool agent_setup(Variant agentNode);
     void planner_tick();
+
+    void _process(double delta) override;
 };
 
 #endif // AIBlueAgent_CLASS_H

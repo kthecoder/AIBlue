@@ -2,15 +2,10 @@ extends CharacterBody3D
 
 # TODO Design the MoveTo function
 
-var agentHTN : RefCounted
-
 func _ready():
-	agentHTN = AIBlueAgent.new()
-	agentHTN.agent_setup(self)
-	
+	$AIBlueAgent.agent_setup(self.get_path())
 func _process(_delta):
-	agentHTN.planner_tick();
-
+	pass
 #
 #const SPEED = 5.0
 #const JUMP_VELOCITY = 4.5

@@ -17,38 +17,23 @@ class AgentXDomainDefinition
 {
 
 private:
-    godot::Node3D *agentNode;
+    AgentDomainBuilder builder = AgentDomainBuilder("AgentX");
 
 public:
     void init_domain(Node3D *givenAgentNode)
     {
-        if (givenAgentNode == nullptr)
+        if (givenAgentNode)
         {
-            UtilityFunctions::print("AgentXDomainDefinition NULL PTR");
+            builder.init_builder(givenAgentNode);
         }
         else
         {
-            if (givenAgentNode->has_method("moveTo"))
-            {
-                UtilityFunctions::print("AgentXDomainDefinition : Agent has function Move To");
-            }
-            else
-            {
-                UtilityFunctions::print("AgentXDomainDefinition : Agent does not have function Move To");
-            }
-            agentNode = givenAgentNode;
+            UtilityFunctions::print("AgentXDomainDefinition NULL PTR");
         }
     }
 
     Domain CreateAgentDomainBuilder()
     {
-        AgentDomainBuilder builder("AgentX");
-        if (agentNode == nullptr)
-        {
-            UtilityFunctions::print("AgentXDomainDefinition2 NULL PTR");
-        }
-        builder.init_builder(agentNode);
-
         /*
             Tasks are encapsulated and defined in AgentDomainBuilder.h
         */

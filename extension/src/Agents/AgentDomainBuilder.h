@@ -4,6 +4,7 @@
 #include <godot_cpp/classes/script.hpp>
 #include <godot_cpp/classes/resource_loader.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/character_body3d.hpp>
 #include <godot_cpp/variant/utility_functions.hpp>
 
@@ -23,7 +24,7 @@ class AgentDomainBuilder final : public BaseDomainBuilder
 {
 
 private:
-    godot::Node3D *agentNode;
+    Node3D *agentNode;
 
 public:
     void init_builder(Node3D *givenAgentNode)
@@ -48,10 +49,12 @@ public:
         }
         else
         {
-            if (this->agentNode->has_method("moveTo"))
+            if (agentNode->has_method("moveTo"))
             {
-                Variant result = this->agentNode->call("moveTo");
-                UtilityFunctions::print("Called Move To");
+                Variant result;
+                agentNode->call("moveTo", &result);
+                // Variant result = agent->call("moveTo");
+                UtilityFunctions::print(result);
 
                 return TaskStatus::Success;
             }
