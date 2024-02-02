@@ -22,24 +22,18 @@ AIBlueAgent::~AIBlueAgent()
 {
 }
 
-bool AIBlueAgent::agent_setup(Object *agentNode)
+bool AIBlueAgent::agent_setup(Variant agentNode)
 {
-    if (agentNode == nullptr)
+    Node3D *node = godot::Object::cast_to<godot::Node3D>(agentNode.operator Object *());
+
+    if (node == nullptr)
     {
         return false;
     }
     else
     {
-        if (agentNode->has_method("moveTo"))
-        {
-            UtilityFunctions::print("AIBLUE : Agent has function Move To");
-        }
-        else
-        {
-            UtilityFunctions::print("AIBLUE : Agent does not have function Move To");
-        }
         // Build the Domain of the selected Agent
-        _agentX_domainDefinition.init_domain(Object::cast_to<Node3D>(agentNode));
+        _agentX_domainDefinition.init_domain(node);
         _domain = _agentX_domainDefinition.CreateAgentDomainBuilder();
 
         return true;

@@ -35,7 +35,7 @@ public:
     AIBlueAgent();
     ~AIBlueAgent();
 
-    bool agent_setup(Object *agentNode);
+    bool agent_setup(Variant agentNode);
     void planner_tick();
 };
 
