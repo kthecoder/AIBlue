@@ -14,14 +14,36 @@ AIBlueAgent::AIBlueAgent()
     _context = AgentContext();
     // Must Initialize the Agent Context
     _context.Init();
-    // Build the Domain of the selected Agent
-    _domain = _agentX_domainDefinition.CreateAgentDomainBuilder();
 
     UtilityFunctions::print("AIBlueAgent | Planner Finished Setup");
 }
 
 AIBlueAgent::~AIBlueAgent()
 {
+}
+
+bool AIBlueAgent::agent_setup(Object *agentNode)
+{
+    if (agentNode == nullptr)
+    {
+        return false;
+    }
+    else
+    {
+        if (agentNode->has_method("moveTo"))
+        {
+            UtilityFunctions::print("AIBLUE : Agent has function Move To");
+        }
+        else
+        {
+            UtilityFunctions::print("AIBLUE : Agent does not have function Move To");
+        }
+        // Build the Domain of the selected Agent
+        _agentX_domainDefinition.init_domain(Object::cast_to<Node3D>(agentNode));
+        _domain = _agentX_domainDefinition.CreateAgentDomainBuilder();
+
+        return true;
+    }
 }
 
 void AIBlueAgent::planner_tick()
@@ -34,5 +56,6 @@ void AIBlueAgent::planner_tick()
 
 void AIBlueAgent::_bind_methods()
 {
+    ClassDB::bind_method(D_METHOD("agent_setup", "node"), &AIBlueAgent::agent_setup);
     ClassDB::bind_method(D_METHOD("planner_tick"), &AIBlueAgent::planner_tick);
 }

@@ -16,12 +16,38 @@ using namespace FluidHTN;
 class AgentXDomainDefinition
 {
 
-    // TODO Implement Domain Definition
-    // Returns a Domain with Tasks, Conditions, Effects
+private:
+    godot::Node3D *agentNode;
+
 public:
+    void init_domain(Node3D *givenAgentNode)
+    {
+        if (givenAgentNode == nullptr)
+        {
+            UtilityFunctions::print("AgentXDomainDefinition NULL PTR");
+        }
+        else
+        {
+            if (givenAgentNode->has_method("moveTo"))
+            {
+                UtilityFunctions::print("AgentXDomainDefinition : Agent has function Move To");
+            }
+            else
+            {
+                UtilityFunctions::print("AgentXDomainDefinition : Agent does not have function Move To");
+            }
+            agentNode = givenAgentNode;
+        }
+    }
+
     Domain CreateAgentDomainBuilder()
     {
         AgentDomainBuilder builder("AgentX");
+        if (agentNode == nullptr)
+        {
+            UtilityFunctions::print("AgentXDomainDefinition2 NULL PTR");
+        }
+        builder.init_builder(agentNode);
 
         /*
             Tasks are encapsulated and defined in AgentDomainBuilder.h

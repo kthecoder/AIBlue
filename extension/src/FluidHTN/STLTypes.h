@@ -10,7 +10,9 @@
 #include <memory>
 #include <queue>
 #include <stack>
+#include <vector>
 #include <unordered_set>
+#include <unordered_map>
 
 template <typename T>
 using SharedPtr = std::shared_ptr<T>;
