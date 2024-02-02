@@ -51,8 +51,7 @@ public:
         {
             if (agentNode->has_method("moveTo"))
             {
-                Variant result;
-                agentNode->call("moveTo", &result);
+                Variant result = agentNode->call("moveTo");
                 // Variant result = agent->call("moveTo");
                 UtilityFunctions::print(result);
 

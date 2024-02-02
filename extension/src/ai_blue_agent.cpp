@@ -24,9 +24,9 @@ AIBlueAgent::~AIBlueAgent()
 
 bool AIBlueAgent::agent_setup(Variant agentNode)
 {
-
     if (agentNode)
     {
+
         NodePath path = agentNode;
         Node3D *node = Object::cast_to<Node3D>(get_node_or_null(path));
         // Build the Domain of the selected Agent
