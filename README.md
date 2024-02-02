@@ -14,7 +14,9 @@ Since GdScript is duck typed and does not have interfaces, porting this to GdScr
 
 # How it Works
 
-Agents are fully designed in the C++ extension, operators and sensors are done in GdScript. Once you have fully designed your Agent(s) knowledge/context, domain and calls in c++ and call your gdscript functions for operators and sensors, you can then compile the plugin and include it in your project where Godot will call the binaries of your built extension.
+Agents are fully designed in the C++ extension, operators and sensors are done in GdScript. Once you have fully designed your Agent(s) knowledge/context, domain int c++ and in gdextension call all your operators from gdscript functions, you can then compile the plugin and include it's binaries in your project where Godot will call the binaries of your built extension. For more information on building see : [Project ReadMe](https://github.com/kthecoder/AIBlue/blob/main/PROJECTREADME.md)
+
+![AI Blue Agent : FluidHTN CPP in GDExtension Model](https://github.com/kthecoder/AIBlue/blob/main/Assets/Architecture.drawio.png)
 
 1. Context
    1. Knowledge system, the brain of the Agent
@@ -34,14 +36,6 @@ Agents are fully designed in the C++ extension, operators and sensors are done i
 1. Operators (A.K.A. ActionsAPI)
    1. Agent Actions can be fully built in Godot/GdScript or C++.
    1. If GdScript is chosen, we can define operators in GdScript and execute them from C++
-      1. You can call functions in C++ that are in Godot
-         1. See : https://www.reddit.com/r/godot/comments/a7deys/call_gdscript_function_from_c/
-         ```C++
-            Ref<Script> script = ResourceLoader::load("some_node.gd", "Script");
-            Object *obj = ClassDB::instance(script->get_instance_base_type());
-            obj->set_script(script.get_ref_ptr());
-            obj->call("a_method");
-         ```
       1. i.e. Execute : MoveTo(enemyX14)
          1. Where enemyX14 was chosen by the Planner based on the Knowledge of the AI's Context
       1. The Planner needs to know the success or failure of an operator

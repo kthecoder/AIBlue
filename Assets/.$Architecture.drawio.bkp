@@ -1,0 +1,36 @@
+<mxfile host="Electron" modified="2024-02-02T22:38:12.756Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/23.0.2 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="69rogt0JzGu8iu-__k1X" version="23.0.2" type="device">
+  <diagram name="Page-1" id="2wWzTN-BeP0YJ2wlxR15">
+    <mxGraphModel dx="1886" dy="876" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="thpBK5Ogu7jyTQVFdLfv-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="thpBK5Ogu7jyTQVFdLfv-1" target="thpBK5Ogu7jyTQVFdLfv-6">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="255" y="390" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="thpBK5Ogu7jyTQVFdLfv-1" value="CharacterBody3D" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="240" y="240" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="thpBK5Ogu7jyTQVFdLfv-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="thpBK5Ogu7jyTQVFdLfv-2" target="thpBK5Ogu7jyTQVFdLfv-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="thpBK5Ogu7jyTQVFdLfv-2" value="AIBlueAgent&lt;br&gt;&amp;lt;GDExtension:Node3D&amp;gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="150" y="530" width="210" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="thpBK5Ogu7jyTQVFdLfv-3" value="Planner Ticks" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="550" y="530" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="thpBK5Ogu7jyTQVFdLfv-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="thpBK5Ogu7jyTQVFdLfv-6" target="thpBK5Ogu7jyTQVFdLfv-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="thpBK5Ogu7jyTQVFdLfv-6" value="Agent_Setup" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="195" y="370" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="thpBK5Ogu7jyTQVFdLfv-8" value="Passes the CharacterBody3D Node to the AIBlue Agent&#39;s Code." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="50" y="360" width="130" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
