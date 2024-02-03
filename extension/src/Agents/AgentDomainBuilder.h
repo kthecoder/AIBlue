@@ -44,7 +44,7 @@ public:
     {
         if (agentNode == nullptr)
         {
-            UtilityFunctions::print("AgentDomainBuilder : NULL PTR");
+            // UtilityFunctions::print("AgentDomainBuilder : NULL PTR");
             return TaskStatus::Failure;
         }
         else
@@ -53,13 +53,19 @@ public:
             {
                 Variant result = agentNode->call("moveTo");
                 // Variant result = agent->call("moveTo");
-                UtilityFunctions::print(result);
-
-                return TaskStatus::Success;
+                // UtilityFunctions::print(result);
+                if (result)
+                {
+                    return TaskStatus::Success;
+                }
+                else
+                {
+                    return TaskStatus::Failure;
+                }
             }
             else
             {
-                UtilityFunctions::print("AgentDomainBuilder : No Function moveTo");
+                // UtilityFunctions::print("AgentDomainBuilder : No Function moveTo");
                 return TaskStatus::Failure;
             }
         }
@@ -71,32 +77,6 @@ public:
 
         AddOperator(std::bind(&AgentDomainBuilder::MoveToOperator, this, std::placeholders::_1));
 
-        UtilityFunctions::print("Added MoveTo Operator");
-
-        // AddOperator([](IContext &) -> TaskStatus
-        //             {
-        //                 UtilityFunctions::print("Got to Add Operator.");
-        //                 //TODO Implement Godot Function that you call to Execute MoveTo
-        //                 //! Godot Function must return Enum of TaskStatus
-        //                 // You could return an INT of 0 - 2, and convert it in a helper class
-        //                 // Ref<Resource> res = ResourceLoader::get_singleton()->load("controller/agent/AgentController.gd", "Script");
-        //                 // if (res.is_valid() && res->is_class("Script")) {
-        //                 //     UtilityFunctions::print("Resource Loaded, is a script.");
-        //                 //     Ref<Script> script = res;
-        //                 //     //!ERROR : Can't call non-static function 'moveTo' in script
-        //                 //     Variant ret = script->call("moveTo");
-        //                 // } else {
-        //                 //     // Handle the case where the resource isn't a script or couldn't be loaded
-        //                 // }
-
-        //                 /*
-        //                     Node *node = get_node<CharacterBody3D>(NodePath("AgentController"));
-        //                     CharacterBody3D *node = Object::cast_to<CharacterBody3D>(Node::get_node(NodePath("AgentController")));
-        //                     node->call('moveTo');
-        //                 */
-
-        //                Variant result = agentNode->call("moveTo");
-
-        //                 return TaskStatus::Success; });
+        // UtilityFunctions::print("Added MoveTo Operator");
     }
 };

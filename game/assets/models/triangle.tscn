@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cmax004dml8eg"]
 
-[ext_resource type="PackedScene" uid="uid://cxmulh0n3u2l2" path="res://assets/triangle.blend" id="1_rbxqw"]
+[ext_resource type="PackedScene" uid="uid://cxmulh0n3u2l2" path="res://assets/models/triangle.blend" id="1_rbxqw"]
 [ext_resource type="Material" uid="uid://c5p4grn8ivgk1" path="res://assets/materials/light_blue.tres" id="2_y3v6s"]
 
 [node name="triangle" instance=ExtResource("1_rbxqw")]

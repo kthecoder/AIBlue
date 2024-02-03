@@ -1,0 +1,75 @@
+[gd_scene load_steps=3 format=3 uid="uid://d267g8pcowubb"]
+
+[ext_resource type="Script" path="res://scenes/Menu/MainMenu.gd" id="1_7vr6b"]
+[ext_resource type="Texture2D" uid="uid://b1v876rqyo5k1" path="res://assets/images/pexels-mo-eid-8347501.jpg" id="1_bw06i"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7vr6b")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -5.0
+offset_right = 7.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_bw06i")
+expand_mode = 5
+stretch_mode = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 376.0
+offset_right = 382.0
+offset_bottom = 566.0
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Host" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Host"
+
+[node name="Join" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Join"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 796.0
+offset_top = 401.0
+offset_right = 1108.0
+offset_bottom = 543.0
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="TextEdit" type="TextEdit" parent="VBoxContainer2"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+placeholder_text = "Player Display Name"
+
+[node name="TextEdit3" type="TextEdit" parent="VBoxContainer2"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "http://localhost"
+
+[node name="TextEdit2" type="TextEdit" parent="VBoxContainer2"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "7000"
+
+[connection signal="pressed" from="VBoxContainer/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="VBoxContainer/Join" to="." method="_on_join_pressed"]

@@ -53,7 +53,7 @@ func _on_vision_sensor_timeout():
 						print('Vision Sensor : Detected Enemy in Sight')
 
 func moveTo() -> bool:
-	print("Move Agent To Location")
+	#print("Move Agent To Location")
 	return true;
 
 

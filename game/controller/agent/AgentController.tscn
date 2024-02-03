@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://d1l8jr35roq11"]
 
 [ext_resource type="Script" path="res://controller/agent/AgentController.gd" id="1_3lcxf"]
-[ext_resource type="PackedScene" uid="uid://cmax004dml8eg" path="res://assets/triangle.tscn" id="1_j6i1g"]
+[ext_resource type="PackedScene" uid="uid://cmax004dml8eg" path="res://assets/models/triangle.tscn" id="1_j6i1g"]
 
 [sub_resource type="GDScript" id="GDScript_iqtkw"]
 

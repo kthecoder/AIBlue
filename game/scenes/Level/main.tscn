@@ -1,0 +1,99 @@
+[gd_scene load_steps=12 format=3 uid="uid://dgm4ah3j8jxke"]
+
+[ext_resource type="Script" path="res://scripts/Levels/LevelScript.gd" id="1_ptcg0"]
+[ext_resource type="Texture2D" uid="uid://dtmi42xi1jbgr" path="res://assets/textures/Prototype/Dark/texture_07.png" id="2_ejchn"]
+[ext_resource type="Script" path="res://scripts/Spawners/Spawning.gd" id="2_j7aj2"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qstfa"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_irks6"]
+sky_material = SubResource("ProceduralSkyMaterial_qstfa")
+
+[sub_resource type="Environment" id="Environment_heqyn"]
+background_mode = 2
+sky = SubResource("Sky_irks6")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_olr0v"]
+size = Vector3(4, 4, 4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_quwrd"]
+albedo_color = Color(0.301961, 0.301961, 0.301961, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nwdw7"]
+size = Vector3(6, 6, 6)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_it68a"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5xkaa"]
+albedo_texture = ExtResource("2_ejchn")
+uv1_triplanar = true
+
+[node name="TestLevel" type="Node3D"]
+script = ExtResource("1_ptcg0")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_heqyn")
+
+[node name="Spawning" type="Node3D" parent="."]
+script = ExtResource("2_j7aj2")
+
+[node name="PlayerSpawner" type="MultiplayerSpawner" parent="Spawning"]
+_spawnable_scenes = PackedStringArray("res://controller/player/PlayerController.tscn")
+spawn_path = NodePath("../SpawnedPlayers")
+
+[node name="PlayerSpawnPoints" type="Node3D" parent="Spawning"]
+
+[node name="Marker3D" type="Marker3D" parent="Spawning/PlayerSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.220346, -6.96668)
+
+[node name="Marker3D2" type="Marker3D" parent="Spawning/PlayerSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.220346, 7.19992)
+
+[node name="Marker3D3" type="Marker3D" parent="Spawning/PlayerSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5156, 0.220346, -0.233832)
+
+[node name="Marker3D4" type="Marker3D" parent="Spawning/PlayerSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.39961, 0.220346, -0.233832)
+
+[node name="SpawnedPlayers" type="Node3D" parent="Spawning"]
+
+[node name="AgentSpawner" type="MultiplayerSpawner" parent="Spawning"]
+_spawnable_scenes = PackedStringArray("res://controller/agent/AgentController.tscn")
+spawn_path = NodePath("../SpawnedAgents")
+
+[node name="AgentSpawnPoints" type="Node3D" parent="Spawning"]
+
+[node name="SpawnedAgents" type="Node3D" parent="Spawning"]
+
+[node name="Obstacles" type="Node3D" parent="."]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.02534, 29.6323)
+mesh = SubResource("BoxMesh_olr0v")
+material = SubResource("StandardMaterial3D_quwrd")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.02534, -28.3076)
+mesh = SubResource("BoxMesh_olr0v")
+material = SubResource("StandardMaterial3D_quwrd")
+
+[node name="CSGMesh3D3" type="CSGMesh3D" parent="Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.7066, 3.01545, -28.3076)
+mesh = SubResource("BoxMesh_nwdw7")
+material = SubResource("StandardMaterial3D_quwrd")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_it68a")
+
+[node name="Floor" type="CSGBox3D" parent="NavigationRegion3D"]
+material_override = SubResource("StandardMaterial3D_5xkaa")
+use_collision = true
+size = Vector3(200, 0.02, 200)

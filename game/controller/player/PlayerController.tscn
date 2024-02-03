@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://6s5rk0xolkxi"]
 
 [ext_resource type="Script" path="res://controller/player/PlayerController.gd" id="1_050lm"]
-[ext_resource type="PackedScene" uid="uid://cmax004dml8eg" path="res://assets/triangle.tscn" id="1_ty86b"]
+[ext_resource type="PackedScene" uid="uid://cmax004dml8eg" path="res://assets/models/triangle.tscn" id="1_ty86b"]
 [ext_resource type="Script" path="res://controller/player/InputController.gd" id="3_6po3t"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_n6wy6"]

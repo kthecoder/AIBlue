@@ -8,14 +8,14 @@ using namespace godot;
 
 AIBlueAgent::AIBlueAgent()
 {
-    UtilityFunctions::print("AIBlueAgent | Planner is being setup.");
+    // UtilityFunctions::print("AIBlueAgent | Planner is being setup.");
     _planner = Planner();
 
     _context = AgentContext();
     // Must Initialize the Agent Context
     _context.Init();
 
-    UtilityFunctions::print("AIBlueAgent | Planner Finished Setup");
+    // UtilityFunctions::print("AIBlueAgent | Planner Finished Setup");
 }
 
 AIBlueAgent::~AIBlueAgent()
