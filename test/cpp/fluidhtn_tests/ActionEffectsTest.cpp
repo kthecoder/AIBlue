@@ -21,7 +21,7 @@ public:
  *
  */
 
-TEST(ActionEffectsTest, Action_Effect_Sets_Name_Validated)
+TEST(ActionEffectsTest, Sets_Name_Validated)
 {
     ActionEffect a("Name", FluidEffectType::PlanOnly, nullptr);
 
@@ -35,7 +35,7 @@ TEST(ActionEffectsTest, Action_Effect_Sets_Name_Validated)
  *
  */
 
-TEST(ActionEffectsTest, Action_Effect_Sets_Type_Validated)
+TEST(ActionEffectsTest, Sets_Type_Validated)
 {
     ActionEffect e("Name", FluidEffectType::PlanOnly, nullptr);
 
@@ -49,7 +49,7 @@ TEST(ActionEffectsTest, Action_Effect_Sets_Type_Validated)
  *
  */
 
-TEST(ActionEffectsTest, Action_Effect_Does_Nothing_Without_Function_Validated)
+TEST(ActionEffectsTest, Does_Nothing_Without_Function_Validated)
 {
     TestContext ctx;
     ActionEffect e("Name", FluidEffectType::PlanOnly, nullptr);
@@ -64,7 +64,7 @@ TEST(ActionEffectsTest, Action_Effect_Does_Nothing_Without_Function_Validated)
  *
  */
 
-TEST(ActionEffectsTest, Action_Effect_Calls_Its_Function_Validated)
+TEST(ActionEffectsTest, Calls_Its_Function_Validated)
 {
     TestContext ctx;
     ActionEffect e("Name", FluidEffectType::PlanOnly, [=](IContext &c, FluidEffectType)

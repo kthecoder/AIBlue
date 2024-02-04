@@ -57,7 +57,7 @@ TEST(DomainBuilderTests, Builder_Invalidates_Pointer_Missing_End)
 }
 
 /**
- *  Test : Selector Validated
+ *  Test : Selector - Validated
  *
  *  Description : The Domain correctly adds a selector
  *
@@ -110,7 +110,7 @@ TEST(DomainBuilderTests, Selector_Builder_Missing_End)
 }
 
 /**
- *  Test : Selector Compound Task Validated
+ *  Test : Selector Compound Task - Validated
  *
  *  Description : Selector should be a compound task
  *
@@ -128,7 +128,7 @@ TEST(DomainBuilderTests, Selector_Compound_Task_Validated)
 }
 
 /**
- *  Test : Sequence Validated
+ *  Test : Sequence - Validated
  *
  *  Description : The domain should correctly add a sequence task
  *
@@ -161,7 +161,7 @@ TEST(DomainBuilderTests, Sequence_Missing_End)
 }
 
 /**
- *  Test : Sequence Compound Task Validated
+ *  Test : Sequence Compound Task - Validated
  *
  *  Description : The Sequence with a Compound Task inside, should be valid
  *
@@ -178,7 +178,7 @@ TEST(DomainBuilderTests, Sequence_Compound_Task_Validated)
 }
 
 /**
- *  Test : Add Action to Domain Validated
+ *  Test : Add Action to Domain - Validated
  *
  *  Description : The added action should add to the domain correctly
  *
@@ -211,7 +211,7 @@ TEST(DomainBuilderTests, Add_Action_Missing_End)
 }
 
 /**
- *  Test : Adding Primitive Task Validated
+ *  Test : Adding Primitive Task - Validated
  *
  *  Description :
  *
@@ -244,7 +244,7 @@ TEST(DomainBuilderTests, Pause_Plan_Not_Decomposed)
 }
 
 /**
- *  Test : Pause Plan Validated
+ *  Test : Pause Plan - Validated
  *
  *  Description : The Pause Plan correctly setup and functions
  *
@@ -279,7 +279,7 @@ TEST(DomainBuilderTests, Pause_Plan_Missing_End)
 }
 
 /**
- *  Test : Add Condition Validated
+ *  Test : Add Condition - Validated
  *
  *  Description : The Condition is correctly added to the domain
  *
@@ -314,7 +314,7 @@ TEST(DomainBuilderTests, Executing_Condition_Missing_Primitive_Task_Parent)
 }
 
 /**
- *  Test : Executing Condition Validated
+ *  Test : Executing Condition - Validated
  *
  *  Description : Correctly executes condition in domain
  *
@@ -369,7 +369,7 @@ TEST(DomainBuilderTests, Operators_Parent_NOT_Primitive)
 }
 
 /**
- *  Test : Add Operator Validated
+ *  Test : Add Operator - Validated
  *
  *  Description : Operator correctly adds to the domain
  *
@@ -423,7 +423,7 @@ TEST(DomainBuilderTests, Effects_Parent_NOT_Primitive)
 }
 
 /**
- *  Test : Add Effect Validated
+ *  Test : Add Effect - Validated
  *
  *  Description : Adding Effect to domain is correct and valid
  *
@@ -478,7 +478,7 @@ TEST(DomainBuilderTests, Splice_Missing_Compound_Parent)
 }
 
 /**
- *  Test : Add Splice Validated
+ *  Test : Add Splice - Validated
  *
  *  Description : Correctly add splice to the domain defintion
  *
@@ -551,7 +551,7 @@ TEST(DomainBuilderTests, Slot_ID_Already_Defined)
 }
 
 /**
- *  Test : Add Slot Validated
+ *  Test : Add Slot - Validated
  *
  *  Description : Add Slot to Domain is validated
  *
