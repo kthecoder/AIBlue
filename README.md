@@ -12,6 +12,10 @@ Due to the level of abstraction and high customization of Fluid HTN, it is impos
 
 Since GdScript is duck typed and does not have interfaces, porting this to GdScript would be challenging since this project relies on the Builder Pattern, Queues, etc.
 
+# Usage
+
+For step by step instructions on how to use this template see : [Project Read Me](https://github.com/kthecoder/AIBlue/blob/main/PROJECTREADME.md)
+
 # How it Works
 
 Agents are fully designed in the C++ extension, operators and sensors are done in GdScript. Once you have fully designed your Agent(s) knowledge/context, domain int c++ and in gdextension call all your operators from gdscript functions, you can then compile the plugin and include it's binaries in your project where Godot will call the binaries of your built extension. For more information on building see : [Project ReadMe](https://github.com/kthecoder/AIBlue/blob/main/PROJECTREADME.md)

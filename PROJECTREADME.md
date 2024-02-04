@@ -1,11 +1,37 @@
 # Project Read Me
 
+# Usage
+
+1. Setup the Project with the setup instructions below
+1. Build the Project
+   1. Frist time : `CTRL + P` -> `task initial-build-extension`
+   1. In VSCode : `CTRL + P` -> `task build-extension`
+   1. For use in Development Game & Debugging : `CTRL + P` -> `task build-extension [dev build]`
+1. Modify the Agents Folder && AI_Blue_Agent.cpp/.h to fit your project needs
+   1. Write your HTN Domains and World States in C++
+   1. Write your Operators to call functions in GDScript, to perform actual actions in your game
+1. Build the project when you finalize your C++ code
+1. Copy the bin folder `game/bin` to your project
+1. Use your Agent Nodes
+   1. In the included example the Agent Brains are setup as Node3D, that can be found in the search of the add node menu in Godot engine
+1. Call functions on the Agents inside GDScript
+   1. Get a path to your Agent 3D node, and call the functions you defined for sensors in your Agent-C++
+
 # Setup
+
+This setup assumes you are using Windows.
 
 1. Get the Godot CPP Submodules
    1. `git submodule update --remote`
-1. Changes made to the .vscode/tasks.json
-   1. change `scons` to `python -mSCons` or else you will bang your head against a wall trying to get the pathing to work on windows
+1. Install Python and Scons
+1. Changes were already made to the .vscode/tasks.json to make pathing easier
+   1. Change `scons` to `python -mSCons` or else you will bang your head against a wall trying to get the pathing to work on windows
+1. `.vscode`
+   1. `.vscode/launch.json`
+      1. Replace `"program": "C:/Program Files (x86)/Godot_4.2.1/Godot_v4.2.1.exe",` with the location of your Godot exe
+   1. `.vscode/c_cpp_properties.json`
+      1. Replace `"compilerPath": "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.38.33130/bin/Hostx64/x64/cl.exe",` with the location fo your `cl.exe`
+      1. This is for windows only, compiler pathing will differ on mac and linux
 1. C++ Configurations
    1. Must include new directories inside `c_cpp_properties.json`
 1. SCONS Configuration
@@ -31,10 +57,6 @@
    1. Use : `Run Demo [FROM GAME] - [DEBUG MODE]`
 1. When you get errors that are due to FluidHTN
    1. The errors will show a line in FluidHTN and it will actually be the Fatal Exception in the line of code above that
-
-# Code Changes
-
-1. Some classes are renamed from the original CPP version due to the fact that Godot uses those names for some features like ActionType.
 
 # Godot Specifics
 
