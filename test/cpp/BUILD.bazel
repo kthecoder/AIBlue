@@ -1,0 +1,15 @@
+cc_library(
+    name = "fluidhtn",
+    hdrs = glob(["FluidHTN/**/*.h"]),
+    visibility = ["//visibility:public"],
+)
+
+cc_test(
+    name = "test",
+    size = "small",
+    srcs = ["fluidhtn_tests/DomainBuilderTests.cpp"],
+    deps = [
+        ":fluidhtn",
+        "@com_google_googletest//:gtest_main",
+    ],
+)

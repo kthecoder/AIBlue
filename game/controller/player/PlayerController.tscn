@@ -34,7 +34,7 @@ properties/2/replication_mode = 1
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6ljjs"]
 
-[node name="PlayerController" type="CharacterBody3D"]
+[node name="PlayerController" type="CharacterBody3D" groups=["Player"]]
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0, 0, 0)
 script = ExtResource("1_050lm")
 

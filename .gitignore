@@ -21,3 +21,6 @@ bin
 *.includes
 *.idb
 *.exp
+
+# Test Frameworks
+/test/cpp/bazel-*/*

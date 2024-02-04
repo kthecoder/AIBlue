@@ -9,16 +9,12 @@ var currentPlayerCount : int = 0
 
 func _ready():
 	if multiplayer.is_server():
-		print("Setting up spawner")
 		$"..".spawn_player.connect(_spawn_player)
 		multiplayer.peer_disconnected.connect(_remove_player)
 		playerSpawnLocations = $PlayerSpawnPoints.get_children()
-		print("Spawner : Finished Setup")
 
 func _spawn_player(peer_id : int):
-	print("Spawner : Spawn Player")
 	if multiplayer.is_server():
-		print("Creating Player")
 		var setupPlayer = playerScene.instantiate()
 		# Set the Node name to the Peer ID
 		setupPlayer.name = str(peer_id)
@@ -31,7 +27,6 @@ func _spawn_player(peer_id : int):
 		currentPlayerCount += 1
 	
 func _remove_player(peer_id : int):
-	print("Remove Player")
 	if multiplayer.is_server():
 		for player in playerBucket.get_children():
 			if player.name == str(peer_id):
