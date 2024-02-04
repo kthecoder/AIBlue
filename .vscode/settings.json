@@ -107,7 +107,10 @@
         "compare": "cpp",
         "format": "cpp",
         "cfenv": "cpp",
-        "csignal": "cpp"
+        "csignal": "cpp",
+        "any": "cpp",
+        "regex": "cpp",
+        "variant": "cpp"
     },
     "files.exclude": {
         "**/*.tmp": true,

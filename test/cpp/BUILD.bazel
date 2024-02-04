@@ -1,15 +1,33 @@
 cc_library(
     name = "fluidhtn",
-    hdrs = glob(["FluidHTN/**/*.h"]),
+    hdrs = glob([
+        "FluidHTN/**/*.h",
+        "FluidHTN/Contexts/*.h",
+    ]),
+    includes = ["FluidHTN"],
     visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "pch-lib",
+    hdrs = ["pch/precompiled.h"],
+    srcs = ["pch/precompiled.cc"],
+    includes = ["pch"], 
+    deps = [
+        ":fluidhtn",
+    ],
 )
 
 cc_test(
     name = "test",
     size = "small",
-    srcs = ["fluidhtn_tests/DomainBuilderTests.cpp"],
+    srcs = [
+        "fluidhtn_tests/DomainBuilderTests.cpp",
+        "fluidhtn_tests/DomainContextTester.h",
+    ],
     deps = [
         ":fluidhtn",
+        ":pch-lib",
         "@com_google_googletest//:gtest_main",
     ],
 )
