@@ -23,6 +23,7 @@ cc_test(
     size = "small",
     srcs = [
         "fluidhtn_tests/DomainBuilderTests.cpp",
+        "fluidhtn_tests/ActionEffectsTest.cpp",
         "fluidhtn_tests/DomainContextTester.h",
     ],
     deps = [

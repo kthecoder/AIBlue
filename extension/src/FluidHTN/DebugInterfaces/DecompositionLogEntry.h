@@ -46,5 +46,8 @@ namespace FluidHTN
     {
     public:
         SharedPtr<T> _Entry;
+
+        IDecompositionLogEntry(IBaseDecompositionLogEntry logMeta, SharedPtr<T> entry)
+            : IBaseDecompositionLogEntry(logMeta), _Entry(entry) {}
     };
 } // namespace FluidHTN

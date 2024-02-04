@@ -110,7 +110,7 @@ namespace FluidHTN
             }
             else
             {
-                Pair p(e, value);
+                Pair<FluidEffectType, WSVALTYPE> p(e, value);
                 _WorldStateChangeStackArray[(int)state].push(p);
             }
         }
@@ -204,8 +204,15 @@ namespace FluidHTN
             if (_LogDecomposition == false)
                 return;
 
+            IBaseDecompositionLogEntry baseDecompositionLogEntry;
+
+            baseDecompositionLogEntry.Name = name;
+            baseDecompositionLogEntry.Description = description;
+            baseDecompositionLogEntry.Depth = depth;
+            baseDecompositionLogEntry.Color = color;
+
             _DecompositionLog.push(DecomposedEffectEntry{
-                {name, description, depth, color},
+                baseDecompositionLogEntry,
                 effect,
             });
         }
