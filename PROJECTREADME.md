@@ -21,8 +21,10 @@
 
 This setup assumes you are using Windows.
 
-1. Get the Godot CPP Submodules
-   1. `git submodule update --remote`
+1. Clone the repo
+   1. `git clone --recurse-submodules https://github.com/kthecoder/AIBlue.git`
+1. Get the Godot CPP Submodules if you didn't use --recurse-submodules
+   1. `git submodule update --init --recursive`
 1. Install Python and Scons
 1. Changes were already made to the .vscode/tasks.json to make pathing easier
    1. Change `scons` to `python -mSCons` or else you will bang your head against a wall trying to get the pathing to work on windows
