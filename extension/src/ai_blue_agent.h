@@ -28,8 +28,6 @@ private:
     FluidHTN::Planner _planner;
     FluidHTN::Domain _domain;
     AgentContext _context;
-    // TODO Sensory System
-    // StimuliSystem _sensors;
 
 public:
     AIBlueAgent();
@@ -39,6 +37,12 @@ public:
     void planner_tick();
 
     void _process(double delta) override;
+
+    /**
+     *  Sensors
+     *
+     */
+    void vision_sensor();
 };
 
 #endif // AIBlueAgent_CLASS_H

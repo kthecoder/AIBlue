@@ -7,6 +7,8 @@
    1. Frist time : `CTRL + P` -> `task initial-build-extension`
    1. In VSCode : `CTRL + P` -> `task build-extension`
    1. For use in Development Game & Debugging : `CTRL + P` -> `task build-extension [dev build]`
+1. Ensure that the bin folder contains `ai_blue.gdextension`
+   1. If not you can find one in the Godot Docs: https://docs.godotengine.org/en/stable/tutorials/scripting/gdextension/gdextension_cpp_example.html#using-the-gdextension-module
 1. Modify the Agents Folder && AI_Blue_Agent.cpp/.h to fit your project needs
    1. Write your HTN Domains and World States in C++
    1. Write your Operators to call functions in GDScript, to perform actual actions in your game

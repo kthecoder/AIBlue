@@ -55,10 +55,27 @@ void AIBlueAgent::planner_tick()
     _planner.Tick<WsAgent, uint8_t, AgentWorldState>(_domain, _context);
 }
 
+/**
+ *  Sensors
+ *
+ *  Note : Sensors go here
+ */
+
 // TODO You will need to Bind Sensors so that they can be called in Godot
+void AIBlueAgent::vision_sensor()
+{
+    // Vision Sensor Code
+}
+
+/**
+ *  Bind Methods
+ *
+ *  Note : All class Functions to be exposed to GDScript need to be setup here
+ */
 
 void AIBlueAgent::_bind_methods()
 {
     ClassDB::bind_method(D_METHOD("agent_setup", "node"), &AIBlueAgent::agent_setup);
     ClassDB::bind_method(D_METHOD("planner_tick"), &AIBlueAgent::planner_tick);
+    ClassDB::bind_method(D_METHOD("vision_sensor"), &AIBlueAgent::vision_sensor);
 }
