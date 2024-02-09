@@ -6,13 +6,6 @@ const SPEED = 3.0
 
 func _ready():
 	$AIBlueAgent.agent_setup(self.get_path())
-func _process(_delta):
-	var current_location = global_transform.origin
-	var next_location = nav_agent.get_next_location()
-	var new_velocity = (next_location - current_location).normalized() * SPEED
-	
-	velocity = new_velocity
-	move_and_slide()
 
 func update_target_loc(target_loc):
 	nav_agent.set_target_location(target_loc)
@@ -35,6 +28,12 @@ func _on_vision_sensor_timeout():
 
 func moveTo() -> bool:
 	#print("Move Agent To Location")
+	var current_location = global_transform.origin
+	var next_location = nav_agent.get_next_location()
+	var new_velocity = (next_location - current_location).normalized() * SPEED
+	
+	velocity = new_velocity
+	move_and_slide()
 	return true;
 
 func closest_player() -> Vector3:

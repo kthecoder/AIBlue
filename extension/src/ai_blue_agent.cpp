@@ -41,7 +41,7 @@ bool AIBlueAgent::agent_setup(Variant agentNode)
     }
 }
 
-void AIBlueAgent::_process(double _delta)
+void AIBlueAgent::_physics_process(double _delta)
 {
     if (_domain.Root()->Name() != "DefaultDomainName")
     {

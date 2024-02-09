@@ -36,7 +36,7 @@ public:
     bool agent_setup(Variant agentNode);
     void planner_tick();
 
-    void _process(double delta) override;
+    void _physics_process(double delta) override;
 
     /**
      *  Sensors
