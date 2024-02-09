@@ -37,10 +37,10 @@ public:
         /*
             Tasks are encapsulated and defined in AgentDomainBuilder.h
         */
+        // TODO : Add all your needed encapsulated HTN tasks here
 
         builder.AddSelector("MoveTo");
         builder.MoveTo();
-        builder.End(); // End the MoveTO
         builder.End(); // End the Selector
 
         return *builder.Build();

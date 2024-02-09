@@ -61,10 +61,15 @@ void AIBlueAgent::planner_tick()
  *  Note : Sensors go here
  */
 
-// TODO You will need to Bind Sensors so that they can be called in Godot
-void AIBlueAgent::vision_sensor()
+// TODO Update this to meet your Knowledge Definitions
+void AIBlueAgent::vision_sensor(int state, int value)
 {
-    // Vision Sensor Code
+    // Get Agent Movement State in the Agents Knowledge
+    WsAgent wsAgentState = static_cast<WsAgent>(state);
+    // Get the value to assign to that agents Knowledge State
+    AgentMovement movementValue = static_cast<AgentMovement>(value);
+
+    _context.SetStateAgent(wsAgentState, MovementTy(movementValue), true, FluidEffectType::PlanAndExecute);
 }
 
 /**
@@ -73,9 +78,10 @@ void AIBlueAgent::vision_sensor()
  *  Note : All class Functions to be exposed to GDScript need to be setup here
  */
 
+// TODO : You will need to Bind Sensors so that they can be called in Godot
 void AIBlueAgent::_bind_methods()
 {
     ClassDB::bind_method(D_METHOD("agent_setup", "node"), &AIBlueAgent::agent_setup);
     ClassDB::bind_method(D_METHOD("planner_tick"), &AIBlueAgent::planner_tick);
-    ClassDB::bind_method(D_METHOD("vision_sensor"), &AIBlueAgent::vision_sensor);
+    ClassDB::bind_method(D_METHOD("vision_sensor", "state", "value"), &AIBlueAgent::vision_sensor);
 }

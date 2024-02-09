@@ -33,10 +33,10 @@ public:
     }
     AgentDomainBuilder(StringType n) : BaseDomainBuilder(n) {}
 
-    // TODO Implement Extra HasState, SetState
-
     //======================================================//
+    //
     // Encapsulated HTN Tasks
+    //
     //======================================================//
     // TODO Implement Encapsulated HTN Tasks
 
@@ -51,9 +51,10 @@ public:
         {
             if (agentNode->has_method("moveTo"))
             {
+                // Call the
                 Variant result = agentNode->call("moveTo");
-                // Variant result = agent->call("moveTo");
-                // UtilityFunctions::print(result);
+
+                //? Can print output using: UtilityFunctions::print(result);
                 if (result)
                 {
                     return TaskStatus::Success;
@@ -65,7 +66,7 @@ public:
             }
             else
             {
-                // UtilityFunctions::print("AgentDomainBuilder : No Function moveTo");
+                //? Can print output using:UtilityFunctions::print("AgentDomainBuilder : No Function moveTo");
                 return TaskStatus::Failure;
             }
         }
@@ -73,10 +74,16 @@ public:
 
     void MoveTo()
     {
+        AddCondition("AgentNewPos", [=](IContext &ctx)
+                     { return static_cast<AgentContext &>(ctx).HasState(WsAgent::wsAgentMovement, (int)(AgentMovement::NewPosition)); });
         AddAction("MoveTo");
 
         AddOperator(std::bind(&AgentDomainBuilder::MoveToOperator, this, std::placeholders::_1));
 
-        // UtilityFunctions::print("Added MoveTo Operator");
+        AddEffect("ArrivedAtNewPos", FluidEffectType::Permanent, [=](IContext &ctx, FluidEffectType effectType)
+                  { return static_cast<AgentContext &>(ctx).SetState(
+                        WsAgent::wsAgentMovement, (int)(AgentMovement::Arrived), true, effectType); });
+
+        End();
     }
 };
