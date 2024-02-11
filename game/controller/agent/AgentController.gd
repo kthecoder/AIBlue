@@ -101,6 +101,7 @@ func moveTo() -> int:
 		_rotate_agent(new_direction)
 		var steering_behavior_velocity : Vector3 = (new_direction - velocity) * agentDelta * SPEED
 		var new_velocity : Vector3 = velocity + steering_behavior_velocity
+
 		if nav_agent.avoidance_enabled:
 			nav_agent.set_velocity(new_velocity)
 		else:

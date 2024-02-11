@@ -23,7 +23,7 @@ script = SubResource("GDScript_iqtkw")
 [node name="triangle" parent="AgentModel" instance=ExtResource("1_j6i1g")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(2.2, 0, 0, 0, 2.2, 0, 0, 0, 2.2, 0, 1.11032, 0)
+transform = Transform3D(2.2, 0, 0, 0, 2.2, 0, 0, 0, 2.2, 0, 1, 0)
 shape = SubResource("SphereShape3D_2sch0")
 
 [node name="VisionArea" type="Area3D" parent="."]
