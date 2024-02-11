@@ -13,12 +13,6 @@ public:
 
     bool &Done() { return _done; }
 
-    bool HasStateOneParam(WsAgent state)
-    {
-        uint8_t one = 1;
-        return BaseContext::HasState(state, one);
-    }
-
     void SetStateAgent(WsAgent state, int value)
     {
         _WorldState->SetState(static_cast<WsAgent>(state), static_cast<uint8_t>(value));

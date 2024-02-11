@@ -43,6 +43,10 @@ public:
         builder.MoveTo();
         builder.End(); // End the Selector
 
+        builder.AddSelector("Idle");
+        builder.Idle();
+        builder.End(); // End the Selector
+
         return *builder.Build();
     }
 };

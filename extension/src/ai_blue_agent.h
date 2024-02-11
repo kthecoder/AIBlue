@@ -45,6 +45,7 @@ public:
     // TODO : Add all your sensors to the top level class here
 
     void vision_sensor(int state, int value);
+    void movement_update(int state, int value);
 };
 
 #endif // AIBlueAgent_CLASS_H

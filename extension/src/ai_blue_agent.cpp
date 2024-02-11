@@ -72,6 +72,16 @@ void AIBlueAgent::vision_sensor(int state, int value)
     _context.SetStateAgent(wsAgentState, MovementTy(movementValue), true, FluidEffectType::PlanAndExecute);
 }
 
+void AIBlueAgent::movement_update(int state, int value)
+{
+    // Get Agent Movement State in the Agents Knowledge
+    WsAgent wsAgentState = static_cast<WsAgent>(state);
+    // Get the value to assign to that agents Knowledge State
+    AgentMovement movementValue = static_cast<AgentMovement>(value);
+
+    _context.SetStateAgent(wsAgentState, MovementTy(movementValue), true, FluidEffectType::PlanAndExecute);
+}
+
 /**
  *  Bind Methods
  *
@@ -84,4 +94,5 @@ void AIBlueAgent::_bind_methods()
     ClassDB::bind_method(D_METHOD("agent_setup", "node"), &AIBlueAgent::agent_setup);
     ClassDB::bind_method(D_METHOD("planner_tick"), &AIBlueAgent::planner_tick);
     ClassDB::bind_method(D_METHOD("vision_sensor", "state", "value"), &AIBlueAgent::vision_sensor);
+    ClassDB::bind_method(D_METHOD("movement_update", "state", "value"), &AIBlueAgent::vision_sensor);
 }

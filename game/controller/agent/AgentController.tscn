@@ -32,6 +32,9 @@ shape = SubResource("SphereShape3D_2sch0")
 transform = Transform3D(12, 0, 0, 0, -5.24537e-07, -12, 0, 12, -5.24537e-07, 0, 1, -11.057)
 shape = SubResource("ConvexPolygonShape3D_lhsr8")
 
+[node name="AgentTickRate" type="Timer" parent="."]
+autostart = true
+
 [node name="VisionSensor" type="Timer" parent="."]
 wait_time = 0.15
 autostart = true
@@ -39,6 +42,8 @@ autostart = true
 [node name="VisionRayCast" type="RayCast3D" parent="."]
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+avoidance_enabled = true
+debug_enabled = true
 
 [connection signal="timeout" from="VisionSensor" to="." method="_on_vision_sensor_timeout"]
 

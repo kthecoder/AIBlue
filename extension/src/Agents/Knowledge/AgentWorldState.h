@@ -27,14 +27,13 @@ typedef uint8_t MovementTy;
 
 class AgentWorldState : public IWorldState<WsAgent, uint8_t, AgentWorldState>
 {
-    uint8_t CurrentWorldState[3];
+    uint8_t CurrentWorldState[2];
     EnemyRange currentRange;
 
 public:
     AgentWorldState()
     {
         // TODO : Initial States for the Agent are setup here
-        currentRange = static_cast<EnemyRange>(CurrentWorldState[static_cast<int>(WsAgent::wsEnemyRange)]);
         CurrentWorldState[(int)(WsAgent::wsEnemyRange)] = (int)(EnemyRange::InViewRange);
         CurrentWorldState[(int)(WsAgent::wsEnemyRange)] = (int)(AgentMovement::Arrived);
     }
@@ -49,5 +48,5 @@ public:
     void SetState(WsAgent state, uint8_t value) { CurrentWorldState[(int)state] = value; }
 
     //! Size must match the CurrentWorldState length
-    int GetMaxPropertyCount() { return 3; }
+    int GetMaxPropertyCount() { return 2; }
 };

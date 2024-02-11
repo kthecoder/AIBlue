@@ -1,4 +1,5 @@
 #include "FluidHTN/BaseDomainBuilder.h"
+#include "AgentContext.h"
 
 #include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/classes/script.hpp>
@@ -52,17 +53,11 @@ public:
             if (agentNode->has_method("moveTo"))
             {
                 // Call the
-                Variant result = agentNode->call("moveTo");
+                int result = agentNode->call("moveTo");
 
                 //? Can print output using: UtilityFunctions::print(result);
-                if (result)
-                {
-                    return TaskStatus::Success;
-                }
-                else
-                {
-                    return TaskStatus::Failure;
-                }
+                // UtilityFunctions::print(result);
+                return static_cast<TaskStatus>(result);
             }
             else
             {
@@ -83,6 +78,28 @@ public:
         AddEffect("ArrivedAtNewPos", FluidEffectType::Permanent, [=](IContext &ctx, FluidEffectType effectType)
                   { return static_cast<AgentContext &>(ctx).SetState(
                         WsAgent::wsAgentMovement, (int)(AgentMovement::Arrived), true, effectType); });
+
+        End();
+    }
+
+    /**
+     *
+     *  Task : Idle
+     *
+     *  Description : Always succeeds the default state
+     *
+     */
+
+    TaskStatus IdleOperator(IContext &ctx)
+    {
+        return TaskStatus::Success;
+    }
+
+    void Idle()
+    {
+        AddAction("Idle");
+
+        AddOperator(std::bind(&AgentDomainBuilder::IdleOperator, this, std::placeholders::_1));
 
         End();
     }

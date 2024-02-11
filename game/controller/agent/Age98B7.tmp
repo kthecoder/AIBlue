@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://d1l8jr35roq11"]
+
+[ext_resource type="Script" path="res://controller/agent/AgentController.gd" id="1_3lcxf"]
+[ext_resource type="PackedScene" uid="uid://cmax004dml8eg" path="res://assets/models/triangle.tscn" id="1_j6i1g"]
+
+[sub_resource type="GDScript" id="GDScript_iqtkw"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2sch0"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_lhsr8"]
+points = PackedVector3Array(-0.000414371, -1.08583, -1.59394, -0.413111, -1.08583, -1.56336, -0.000414371, 1, -0.00031209, 0.412696, -1.08583, -1.56336, -0.810062, -1.08583, -1.47286, -1.17594, -1.08583, -1.32558, -1.49665, -1.08583, -1.12712, -1.76018, -1.08583, -0.885591, -1.95575, -1.08583, -0.610053, -2.07591, -1.08583, -0.311111, -2.11652, -1.08583, -0.00031209, -2.07591, -1.08583, 0.310799, -1.95575, -1.08583, 0.609741, -1.76018, -1.08583, 0.885279, -1.49665, -1.08583, 1.1268, -1.17594, -1.08583, 1.32527, -0.810062, -1.08583, 1.47255, -0.413111, -1.08583, 1.56305, -0.000414371, -1.08583, 1.59394, 0.412696, -1.08583, 1.56305, 0.809648, -1.08583, 1.47255, 1.17552, -1.08583, 1.32527, 1.49623, -1.08583, 1.1268, 1.75976, -1.08583, 0.885279, 1.95534, -1.08583, 0.609741, 2.0755, -1.08583, 0.310799, 2.11652, -1.08583, -0.00031209, 2.0755, -1.08583, -0.311111, 1.95534, -1.08583, -0.610053, 1.75976, -1.08583, -0.885591, 1.49623, -1.08583, -1.12712, 1.17552, -1.08583, -1.32558, 0.809648, -1.08583, -1.47286)
+
+[node name="AgentController" type="CharacterBody3D" groups=["Agent"]]
+script = ExtResource("1_3lcxf")
+
+[node name="AIBlueAgent" type="AIBlueAgent" parent="."]
+
+[node name="AgentBrain" type="Node3D" parent="."]
+script = SubResource("GDScript_iqtkw")
+
+[node name="AgentModel" type="Node3D" parent="."]
+
+[node name="triangle" parent="AgentModel" instance=ExtResource("1_j6i1g")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(2.2, 0, 0, 0, 2.2, 0, 0, 0, 2.2, 0, 1.11032, 0)
+shape = SubResource("SphereShape3D_2sch0")
+
+[node name="VisionArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VisionArea"]
+transform = Transform3D(12, 0, 0, 0, -5.24537e-07, -12, 0, 12, -5.24537e-07, 0, 1, -11.057)
+shape = SubResource("ConvexPolygonShape3D_lhsr8")
+
+[node name="AgentTickRate" type="Timer" parent="."]
+autostart = true
+
+[node name="VisionSensor" type="Timer" parent="."]
+wait_time = 0.15
+autostart = true
+
+[node name="VisionRayCast" type="RayCast3D" parent="."]
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+avoidance_enabled = true
+
+[connection signal="timeout" from="VisionSensor" to="." method="_on_vision_sensor_timeout"]
+
+[editable path="AgentModel/triangle"]
