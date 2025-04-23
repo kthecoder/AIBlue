@@ -8,9 +8,7 @@ This is a work in progress! I have not created an example to test the success of
 
 # Disclaimer
 
-Due to the level of abstraction and high customization of Fluid HTN, it is impossible to port into Godot. The best solution is to develop the AI system in C++, but develop the sensors and operators in GdScript and have the C++ code call those functions.
-
-Since GdScript is duck typed and does not have interfaces, porting this to GdScript would be challenging since this project relies on the Builder Pattern, Queues, etc.
+The AI system in written in C++, the sensors and operators written in GdScript and make function calls to the C++ code.
 
 # Usage
 
