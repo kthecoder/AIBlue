@@ -1,7 +1,32 @@
-# Godot 4+ specific ignores
+# Godot auto generated files
+*.gen.*
 .godot/
-game/bin/summator/*
+
+# Ignore library files but not the gdextension file
+demo/bin/*
+!demo/bin/android
+demo/bin/android/*
+!demo/bin/android/.gitkeep
+!demo/bin/linux
+demo/bin/linux/*
+!demo/bin/linux/.gitkeep
+!demo/bin/macos
+demo/bin/macos/*
+!demo/bin/macos/.gitkeep
+!demo/bin/windows
+demo/bin/windows/*
+!demo/bin/windows/.gitkeep
+!demo/bin/*.gdextension
 .sconsign*.dblite
+
+# Ignore custom.py
+custom.py
+
+# Ignore generated compile_commands.json
+compile_commands.json
+
+# Ignore files generated for documentation
+/src/gen
 
 # Binaries
 *.o
@@ -13,7 +38,6 @@ game/bin/summator/*
 *.dblite
 *.pdb
 *.lib
-bin
 *.config
 *.creator
 *.creator.user
@@ -22,5 +46,13 @@ bin
 *.idb
 *.exp
 
-# Test Frameworks
-/test/cpp/bazel-*/*
+# Other stuff
+*.log
+
+# VSCode
+.vscode/*
+!.vscode/extensions.json
+.DS_Store
+
+# Jetbrains
+.idea/

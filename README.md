@@ -12,6 +12,8 @@ The AI system in written in C++, the sensors and operators written in GdScript a
 
 # Usage
 
+Godot 4.4 is the currently used Version.
+
 For step by step instructions on how to use this template see : [Project Read Me](https://github.com/kthecoder/AIBlue/blob/main/PROJECTREADME.md)
 
 # How it Works

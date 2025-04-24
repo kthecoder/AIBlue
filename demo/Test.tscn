@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cs6xj3i70yh0f"]
+
+[ext_resource type="Script" uid="uid://ba0phkf16vg6l" path="res://hello_world_gdextention_function.gd" id="1_myinc"]
+
+[node name="Test" type="Node3D"]
+
+[node name="HelloWorld" type="HelloWorld" parent="."]
+script = ExtResource("1_myinc")
