@@ -1,3 +1,8 @@
+# 0.4.0
+
+1. Transitioned to Godot 4.4
+1. Set Code into the Public Domain
+
 # 0.1.1
 
 1. Ported Original CPP tests to Gtest.
