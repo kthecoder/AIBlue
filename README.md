@@ -1,4 +1,4 @@
-![AI Blue a Fluid Hierarchical Task Network Port](https://github.com/kthecoder/AIBlue/blob/main/Assets/ai_blue_banner.png)
+![AI Blue a Fluid Hierarchical Task Network Port](https://github.com/kthecoder/AIBlue/blob/main/Architecture/Assets/ai_blue_banner.png)
 
 A simple HTN planner based around the principles of the Builder Pattern, [Original](https://github.com/ptrefall/fluid-hierarchical-task-network) ported into [C++ Version](https://github.com/amoldeshpande/fluid-hierarchical-task-network), used to create a Godot template.
 
@@ -20,7 +20,7 @@ For step by step instructions on how to use this template see : [Project Read Me
 
 Agents are fully designed in the C++ extension, operators and sensors are done in GdScript. Once you have fully designed your Agent(s) knowledge/context, domain int c++ and in gdextension call all your operators from gdscript functions, you can then compile the plugin and include it's binaries in your project where Godot will call the binaries of your built extension. For more information on building see : [Project ReadMe](https://github.com/kthecoder/AIBlue/blob/main/PROJECTREADME.md)
 
-![AI Blue Agent : FluidHTN CPP in GDExtension Model](https://github.com/kthecoder/AIBlue/blob/main/Assets/Architecture.drawio.png)
+![AI Blue Agent : FluidHTN CPP in GDExtension Model](https://github.com/kthecoder/AIBlue/blob/main/Architecture/Assets/Architecture.drawio.png)
 
 1. Context
    1. Knowledge system, the brain of the Agent
@@ -183,7 +183,7 @@ Now that you have taken the time to really think out what you want your Agent(s)
 
 The following attempts to illustrate the architecture of the CPP version of Fluid HTN:
 
-![Fluid HTN CPP Version Architecture Diagram](https://github.com/kthecoder/AIBlue/blob/main/Assets/architecture.png)
+![Fluid HTN CPP Version Architecture Diagram](https://github.com/kthecoder/AIBlue/blob/main/Architecture/Assets/architecture.png)
 
 Based on your Agent Notation:
 
