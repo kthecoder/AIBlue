@@ -10,6 +10,8 @@ This is a work in progress! I have not created an example to test the success of
 
 The AI system in written in C++, the sensors and operators written in GdScript and make function calls to the C++ code.
 
+Code is no longer _generated from paddy-exe/GDExtensionSummator_ but [the Godot quickstart template for GDExtension development with Godot 4.0+.](https://github.com/godotengine/godot-cpp-template). (Github gives no way to remove that from the repo without wiping this one and remaking it.)
+
 # Usage
 
 Godot 4.4 is the currently used Version.
