@@ -414,7 +414,7 @@ Interaction with smart objects only if they are in range or available.
 
 The execution will check conditions of a task when it starts, run execution conditions every tick, run the task operator every tick and apply "executing" effects upon task success.
 
-# Liscening
+# Licensing
 
 The FLuid HTN Code comes from :
 

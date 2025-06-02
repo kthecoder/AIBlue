@@ -5,20 +5,18 @@
 #include <godot_cpp/core/defs.hpp>
 #include <godot_cpp/godot.hpp>
 
-#include "Example/Hello_World.h"
+#include "Flow/Flow_Field.h"
 #include "ai_blue_agent.h"
 
 using namespace godot;
 
-void initialize_gdextension_types(ModuleInitializationLevel p_level)
-{
+void initialize_gdextension_types(ModuleInitializationLevel p_level) {
 	if (p_level != MODULE_INITIALIZATION_LEVEL_SCENE) {
 		return;
 	}
 	//TODO GDREGISTER_CLASS(YourClass);
-	GDREGISTER_CLASS(HelloWorld);
+	GDREGISTER_CLASS(FlowField);
 	GDREGISTER_CLASS(AIBlueAgent);
-
 }
 
 void uninitialize_gdextension_types(ModuleInitializationLevel p_level) {
@@ -27,16 +25,14 @@ void uninitialize_gdextension_types(ModuleInitializationLevel p_level) {
 	}
 }
 
-extern "C"
-{
-	// Initialization
-	GDExtensionBool GDE_EXPORT ai_blue_init(GDExtensionInterfaceGetProcAddress p_get_proc_address, GDExtensionClassLibraryPtr p_library, GDExtensionInitialization *r_initialization)
-	{
-		GDExtensionBinding::InitObject init_obj(p_get_proc_address, p_library, r_initialization);
-		init_obj.register_initializer(initialize_gdextension_types);
-		init_obj.register_terminator(uninitialize_gdextension_types);
-		init_obj.set_minimum_library_initialization_level(MODULE_INITIALIZATION_LEVEL_SCENE);
+extern "C" {
+// Initialization
+GDExtensionBool GDE_EXPORT ai_blue_init(GDExtensionInterfaceGetProcAddress p_get_proc_address, GDExtensionClassLibraryPtr p_library, GDExtensionInitialization *r_initialization) {
+	GDExtensionBinding::InitObject init_obj(p_get_proc_address, p_library, r_initialization);
+	init_obj.register_initializer(initialize_gdextension_types);
+	init_obj.register_terminator(uninitialize_gdextension_types);
+	init_obj.set_minimum_library_initialization_level(MODULE_INITIALIZATION_LEVEL_SCENE);
 
-		return init_obj.init();
-	}
+	return init_obj.init();
+}
 }
