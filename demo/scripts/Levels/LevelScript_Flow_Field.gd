@@ -5,9 +5,13 @@ const agent = preload("res://controller/agent/AgentController_FlowField.tscn")
 signal spawn_player(playerID : int)
 
 var grid_origin: Vector3 = Vector3(-100.0, 0.0, -100.0);  # Example for a 200×200 area centered at (0,0,0)
-var cell_size: float = 1.0;
+var cell_size: float = 2.0;
 
 var myFlowField: FlowField;
+
+var grid_size = 100  # Grid cells
+var label_spacing = 20  # Display labels every 20 cells
+
 
 func _ready():
 	GlobalSettings.apply_graphics_settings(get_window(), $WorldEnvironment.environment, self)
@@ -36,7 +40,7 @@ func _ready():
 					for y in range(min_cell_y, max_cell_y + 1):
 						all_occupied_cells.append(Vector2(x, y))
 
-			myFlowField.compute_flow(200, 200, 0, 0, all_occupied_cells);
+			myFlowField.compute_flow(grid_size, grid_size, 0, 0, all_occupied_cells);
 	
 		multiplayer.peer_connected.connect(_spawn_player)
 		var peers = multiplayer.get_peers()

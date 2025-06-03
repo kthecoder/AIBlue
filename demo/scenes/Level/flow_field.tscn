@@ -136,3 +136,5 @@ surface_material_override/0 = SubResource("StandardMaterial3D_brjmj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/MeshInstance3D4/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_ukqwy")
+
+[node name="GridCoordsLabels" type="Node3D" parent="."]

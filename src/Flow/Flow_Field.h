@@ -1,7 +1,10 @@
 #ifndef FLOWFIELD_H
 #define FLOWFIELD_H
 
+#include <godot_cpp/classes/file_access.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/os.hpp>
+
 #include <godot_cpp/variant/utility_functions.hpp>
 
 #include "fast_marching_method.hpp"
@@ -21,7 +24,7 @@ private:
 	int height;
 	vector<array<float, 2>> flow_field;
 
-	string vectorToString(const std::vector<std::array<float, 2>> &flow_field);
+	string vectorToString();
 
 public:
 	FlowField();

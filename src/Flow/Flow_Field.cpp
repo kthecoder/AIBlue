@@ -23,6 +23,7 @@ void FlowField::compute_flow(int set_width, int set_height, int arrivalX, int ar
 			fmm::UniformSpeedEikonalSolver<float, 2>(grid_spacing, uniform_speed));
 
 	// Apply Obstacles
+	//TODO Make a separte function that gets applied, for static obstacles and use this for dynamic obstacles
 	vector<bool> is_obstacle(width * height, false);
 	for (int i = 0; i < obstacles.size(); ++i) {
 		Vector2i pos = obstacles[i];
@@ -33,13 +34,37 @@ void FlowField::compute_flow(int set_width, int set_height, int arrivalX, int ar
 	flow_field.resize(width * height);
 
 	// Compute flow field for each cell
-	for (int x = 1; x < width - 1; ++x) {
-		for (int y = 1; y < height - 1; ++y) {
+	for (int x = 0; x < width; ++x) {
+		for (int y = 0; y < height; ++y) {
 			int idx = x + y * width;
 
 			if (is_obstacle[idx]) {
-				flow_field[idx] = { 0.0f, 0.0f };
-				continue;
+				float min_time = 1e6f;
+				array<float, 2> best_vector = { 0.0f, 0.0f };
+
+				// Check the four neighbors for the smallest arrival time
+				int neighbors[4] = { idx - 1, idx + 1, idx - width, idx + width };
+
+				for (int n = 0; n < 4; n++) {
+					if (neighbors[n] < 0 || neighbors[n] >= width * height || is_obstacle[neighbors[n]])
+						continue;
+
+					if (arrival_times[neighbors[n]] < min_time) {
+						min_time = arrival_times[neighbors[n]];
+
+						// Compute direction to the lowest-time neighbor
+						best_vector[0] = (neighbors[n] % width) - x;
+						best_vector[1] = ((neighbors[n] / width) - y);
+					}
+				}
+
+				// Normalize the vector if a valid neighbor was found
+				float mag = std::sqrt(best_vector[0] * best_vector[0] + best_vector[1] * best_vector[1]);
+				if (mag > 0) {
+					flow_field[idx] = { best_vector[0] / mag, best_vector[1] / mag };
+				} else {
+					flow_field[idx] = { 0.0f, 0.0f }; // No valid direction found
+				}
 			}
 
 			// Compute Vector gradient
@@ -55,11 +80,11 @@ void FlowField::compute_flow(int set_width, int set_height, int arrivalX, int ar
 		}
 	}
 
-	String godot_string = String(vectorToString(flow_field).c_str());
-	UtilityFunctions::print("Flow Field Vector: ", godot_string);
+	// String godot_string = String(vectorToString().c_str());
+	// UtilityFunctions::print("Flow Field Vector: ", godot_string);
 }
 
-std::string FlowField::vectorToString(const std::vector<std::array<float, 2>> &flow_field) {
+std::string FlowField::vectorToString() {
 	std::ostringstream oss;
 	oss << "["; // Start with an opening bracket
 
@@ -79,18 +104,44 @@ Vector3 FlowField::get_move_direction(const Vector3 &world_position, float grid_
 	int gridY = static_cast<int>(world_position.z / grid_cell_size);
 
 	int index = gridX + gridY * width;
-	if (index < 0 || index >= static_cast<int>(flow_field.size())) {
-		UtilityFunctions::push_error("AI Blue Error : Flow Field | Final Flow Field Vector is empty");
+	if (index < 0 || index > static_cast<int>(flow_field.size())) {
+		// UtilityFunctions::push_error("AI Blue Error : Flow Field | Final Flow Field Vector is empty");
 		return Vector3();
 	}
 
-	const auto &direction_vector = flow_field[index];
+	// for (size_t i = 0; i < flow_field.size(); ++i) {
+	// 	UtilityFunctions::print("Index: ", i, " Value: ", flow_field[i][0], ", ", flow_field[i][1]);
+	// }
 
-	Vector3 move_direction(direction_vector[0], 0.0f, direction_vector[1]);
+	// UtilityFunctions::print("World Position: ", world_position);
+	// UtilityFunctions::print("Index: ", index);
+	// UtilityFunctions::print("Flow Field Max Size: ", flow_field.size());
+
+	// Ref<FileAccess>
+	// 		file = FileAccess::open("user://debug_output.txt", FileAccess::WRITE_READ);
+	// if (file.is_valid()) {
+	// 	file->seek_end(); // Move to end before writing
+
+	// 	// Convert flow_field to a readable string
+	// 	String flow_data;
+	// 	for (const auto &vector : flow_field) {
+	// 		flow_data += String("(") + String::num(vector[0]) + ", " + String::num(vector[1]) + ")\n";
+	// 	}
+
+	// 	file->store_string(flow_data); // Write properly formatted data
+	// 	file->close();
+	// }
+
+	// String godot_string = String(const_cast<FlowField *>(this)->vectorToString().c_str());
+	// UtilityFunctions::print("Flow Field Vector: ", godot_string);
+
+	Vector3 move_direction(this->flow_field[index][0], 0.0f, this->flow_field[index][1]);
 
 	if (move_direction.length() > 0.0f) {
 		move_direction = move_direction.normalized();
 	}
+
+	// UtilityFunctions::print("Final Output: ", move_direction);
 
 	return move_direction;
 }

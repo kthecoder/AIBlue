@@ -69,14 +69,14 @@ func _cancel_navigation() -> void:
 	
 func _move_agent(safe_velocity : Vector3):
 	velocity = safe_velocity
-	
-	var collision : KinematicCollision3D = move_and_collide(safe_velocity * get_physics_process_delta_time())
-	if collision:
-		var collider : Object = collision.get_collider()
-		if collider is CharacterBody3D:
-			velocity = safe_velocity.slide(collision.get_normal())
-		elif collider is StaticBody3D:
-			move_and_slide()
+	move_and_slide()
+	#var collision : KinematicCollision3D = move_and_collide(safe_velocity * get_physics_process_delta_time())
+	#if collision:
+		#var collider : Object = collision.get_collider()
+		#if collider is CharacterBody3D:
+			#velocity = safe_velocity.slide(collision.get_normal())
+		#elif collider is StaticBody3D:
+			
 
 func update_target_loc(target_loc):
 	moveToLocation = target_loc + Vector3(randf_range(-1.5,1.5), 0, randf_range(-1.5,1.5))
@@ -91,10 +91,10 @@ func moveTo() -> int:
 	if(global_position != moveToLocation):
 		var new_direction : Vector3 = moveVec
 		# Ensure Units Rotate correctly 
-		_rotate_agent(new_direction)
-		var steering_behavior_velocity : Vector3 = (new_direction - velocity) * agentDelta * SPEED
-		var new_velocity : Vector3 = velocity + steering_behavior_velocity
-		_move_agent(new_velocity);
+		#_rotate_agent(new_direction)
+		#var steering_behavior_velocity : Vector3 = (new_direction - velocity) * agentDelta * SPEED
+		#var new_velocity : Vector3 = velocity + steering_behavior_velocity
+		_move_agent(moveVec * SPEED);
 		
 		return TaskStatus.Continue;
 	elif(global_position == moveToLocation):
