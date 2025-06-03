@@ -21,6 +21,8 @@ private:
 	int height;
 	vector<array<float, 2>> flow_field;
 
+	string vectorToString(const std::vector<std::array<float, 2>> &flow_field);
+
 public:
 	FlowField();
 	~FlowField();

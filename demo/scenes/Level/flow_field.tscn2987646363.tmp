@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://bu2bnqb7jbvdv"]
+[gd_scene load_steps=15 format=3 uid="uid://bu2bnqb7jbvdv"]
 
 [ext_resource type="Script" uid="uid://dxnt5r5m5t1hs" path="res://scripts/Levels/LevelScript_Flow_Field.gd" id="1_o5lst"]
+[ext_resource type="Script" uid="uid://basfttxylkrle" path="res://scripts/SteeringBehaviors/FlowField.gd" id="2_70utq"]
 [ext_resource type="Script" uid="uid://bydjrl4wumi6y" path="res://scripts/Spawners/Spawning.gd" id="2_o5lst"]
 [ext_resource type="PackedScene" uid="uid://d37wo3mvlcmia" path="res://spawner/AgentSpawner.tscn" id="3_70utq"]
 [ext_resource type="Texture2D" uid="uid://l0ib77o0wncj" path="res://assets/textures/Prototype/Dark/texture_08.png" id="4_sf0pg"]
@@ -39,6 +40,9 @@ data = PackedVector3Array(-3, 3, 3, 3, 3, 3, -3, -3, 3, 3, 3, 3, 3, -3, 3, -3, -
 
 [node name="TestLevel" type="Node3D"]
 script = ExtResource("1_o5lst")
+
+[node name="FlowField" type="FlowField" parent="."]
+script = ExtResource("2_70utq")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)

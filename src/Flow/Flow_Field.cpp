@@ -54,6 +54,24 @@ void FlowField::compute_flow(int set_width, int set_height, int arrivalX, int ar
 			}
 		}
 	}
+
+	String godot_string = String(vectorToString(flow_field).c_str());
+	UtilityFunctions::print("Flow Field Vector: ", godot_string);
+}
+
+std::string FlowField::vectorToString(const std::vector<std::array<float, 2>> &flow_field) {
+	std::ostringstream oss;
+	oss << "["; // Start with an opening bracket
+
+	for (size_t i = 0; i < flow_field.size(); ++i) {
+		oss << "(" << flow_field[i][0] << ", " << flow_field[i][1] << ")";
+		if (i < flow_field.size() - 1) {
+			oss << ", "; // Add comma between elements
+		}
+	}
+
+	oss << "]"; // Close the bracket
+	return oss.str();
 }
 
 Vector3 FlowField::get_move_direction(const Vector3 &world_position, float grid_cell_size) const {
@@ -62,6 +80,7 @@ Vector3 FlowField::get_move_direction(const Vector3 &world_position, float grid_
 
 	int index = gridX + gridY * width;
 	if (index < 0 || index >= static_cast<int>(flow_field.size())) {
+		UtilityFunctions::push_error("AI Blue Error : Flow Field | Final Flow Field Vector is empty");
 		return Vector3();
 	}
 

@@ -1,6 +1,7 @@
 extends Node
 
-var game_scene = "res://scenes/Level/main.tscn"
+var nav_agent = "res://scenes/Level/main.tscn"
+var flow_field = "res://scenes/Level/flow_field.tscn"
 
 signal player_connected(peer_id, player_info)
 signal player_disconnected(peer_id)
@@ -15,6 +16,8 @@ const MIN_PLAYER_COUNT = 2
 
 # This will contain player info for every player
 var players = {}
+
+var gameSceneID : int = 0;
 
 # This is the local player info.
 var player_info = {
@@ -41,7 +44,7 @@ func join_game(address = ""):
 		return error
 	multiplayer.multiplayer_peer = peer
 
-func create_game():
+func create_game(gameType : int):
 	var peer = ENetMultiplayerPeer.new()
 	var error = peer.create_server(PORT, MAX_CONNECTIONS)
 	print('Create Server Error: ', error)
@@ -50,11 +53,20 @@ func create_game():
 	multiplayer.multiplayer_peer = peer
 
 	player_connected.emit(1, player_info)
-	load_scene.rpc_id(1, game_scene)
+	if(gameType == 0):
+		gameSceneID = gameType;
+		load_scene.rpc_id(1, nav_agent)
+	elif (gameType == 1):
+		gameSceneID = gameType;
+		load_scene.rpc_id(1, flow_field)
+	else:
+		load_scene.rpc_id(1, nav_agent)
 		
 @rpc("call_local", "reliable")
 func load_scene(game_scene_path):
 	var gameLoaded = get_tree().change_scene_to_file(game_scene_path)
+	
+		
 	if gameLoaded != OK:
 		print('Failure')
 	else:
@@ -71,7 +83,12 @@ func remove_multiplayer_peer():
 func _on_player_connected(id : int):
 	_register_player.rpc_id(id, player_info)
 	if multiplayer.is_server():
-		load_scene.rpc_id(id, game_scene)
+		if (gameSceneID == 0):
+			load_scene.rpc_id(id, nav_agent)
+		elif (gameSceneID == 1):
+			load_scene.rpc_id(id, flow_field)
+		else:
+			load_scene.rpc_id(id, nav_agent)
 
 @rpc("any_peer", "reliable")
 func _register_player(new_player_info):
@@ -114,5 +131,3 @@ func update_player_info(playerName):
 		player_info = {
 			"name": playerName,
 		}
-
-

@@ -30,3 +30,6 @@ func _ready():
 					all_occupied_cells.append(Vector2(x, y))
 
 	myFlowField.compute_flow(200, 200, 0, 0, all_occupied_cells);
+
+func get_movement_vector(world_pos : Vector3) -> Vector3:
+	return myFlowField.get_move_direction(world_pos, cell_size);
