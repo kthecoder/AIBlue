@@ -68,8 +68,10 @@ func _cancel_navigation() -> void:
 	aiBrain.movement_update(WsAgent.wsAgentMovement, AgentMovement.Arrived)
 	
 func _move_agent(safe_velocity : Vector3):
-	velocity = safe_velocity
-	move_and_slide()
+	velocity = velocity.lerp(safe_velocity * SPEED, 0.2)
+	
+	if velocity.length() > 0.01:  # Ignore micro movements
+		move_and_slide()
 	#var collision : KinematicCollision3D = move_and_collide(safe_velocity * get_physics_process_delta_time())
 	#if collision:
 		#var collider : Object = collision.get_collider()

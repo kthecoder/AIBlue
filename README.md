@@ -443,3 +443,7 @@ SOFTWARE.
 ```
 
 [C++ Port Author](https://github.com/ptrefall/fluid-hierarchical-task-network/pull/5#issuecomment-1930519847)
+
+# Contributing
+
+Any and all Contributions are subject to the [CLA.md](https://github.com/kthecoder/AIBlue/blob/main/CLA.md)
