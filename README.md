@@ -14,7 +14,7 @@ Code is no longer _generated from paddy-exe/GDExtensionSummator_ but [the Godot 
 
 # Usage
 
-Godot 4.4 is the currently used Version.
+Godot 4.5 is the currently used Version.
 
 For step by step instructions on how to use this template see : [Project Read Me](https://github.com/kthecoder/AIBlue/blob/main/PROJECTREADME.md)
 

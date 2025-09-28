@@ -11,7 +11,7 @@ body:
       label: AIBlue Version
       description: >
         Specify the Git commit hash of your AIBlue build.
-      placeholder: Godot.v4.4.AIBlue [92bee43ad]
+      placeholder: Godot.v4.5.AIBlue [92bee43ad]
     validations:
       required: true
 

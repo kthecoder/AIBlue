@@ -1,6 +1,10 @@
+# 0.5.0
+
+1. Upgrade to Godot 4.5
+
 # 0.4.0
 
-1. Transitioned to Godot 4.4
+1. Upgrade to Godot 4.4
 1. Set Code into the Public Domain
 
 # 0.1.1

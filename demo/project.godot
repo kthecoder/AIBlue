@@ -13,7 +13,7 @@ config_version=5
 config/name="AIBlue"
 config/tags=PackedStringArray("aiblue", "open_source", "template")
 run/main_scene="uid://d267g8pcowubb"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="uid://css4nsvj0rs2s"
 
 [autoload]

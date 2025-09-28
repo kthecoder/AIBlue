@@ -47,7 +47,7 @@ if env["target"] in ["editor", "template_debug"]:
         doc_data = env.GodotCPPDocData("src/gen/doc_data.gen.cpp", source=Glob("doc_classes/*.xml"))
         sources.append(doc_data)
     except AttributeError:
-        print("Not including class reference as we're targeting a pre-4.3 baseline.")
+        print("Not including class reference as we're targeting a 4.5 baseline.")
 
 # .dev doesn't inhibit compatibility, so we don't need to key it.
 # .universal just means "compatible with all relevant arches" so we don't need to key it.
